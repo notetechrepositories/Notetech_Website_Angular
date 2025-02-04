@@ -1,0 +1,30 @@
+<header [ngClass]="{'scrolled': isScrolled}">
+    <div class="navbar">
+        <div class="logo">
+            <img src="assets/images/notetech-logo-light.png" alt="" width="200">
+        </div>
+        <ul class="links" >
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Service</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+
+        <div class="toggle-btn" (click)="toggleMenu()">
+            <i [ngClass]="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+        </div>
+    </div>
+
+    <div class="toggle-menu" [class.open]="isMenuOpen">
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Service</a></li>
+        <li><a href="">Contact</a></li>
+    </div>
+</header>
+
+<main>
+    <section class="main-section">
+        <router-outlet />
+    </section>
+</main>

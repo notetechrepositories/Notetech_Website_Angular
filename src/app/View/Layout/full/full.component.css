@@ -1,0 +1,131 @@
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+a:hover {
+    color: #0EDCFD;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 2rem;
+    transition: background 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
+    background: transparent; 
+}
+
+header.scrolled {
+    background: rgba(0, 0, 0, 0.5); /* Color after scrolling */
+    backdrop-filter: blur(15px);
+}
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    max-width: 1550px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .toggle-btn {
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.navbar .links {
+    display: flex;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    gap:28px !important;
+}
+
+.action-btn {
+    background-color: rgb(255, 255, 255);
+    color: aliceblue;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+}
+
+.action-btn:hover {
+    color: #000000;
+}
+
+.action-btn:active {
+    scale: 0.95;
+}
+
+/* Toggle menu */
+.toggle-menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    width: 300px;
+    height: 0;
+    background: rgba(255, 249, 249, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.toggle-menu.open {
+    height: 25vh;
+}
+
+.toggle-menu li {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 992px) {
+    .navbar .links {
+        display: none !important; /* Force the rule to take precedence */
+    }
+    .navbar .toggle-btn {
+        display: block !important; /* Force the rule to take precedence */
+    }
+    .toggle-menu {
+        display: block;
+    }
+    
+}
+
+@media (max-width: 575px) {
+    .toggle-menu {
+        left: 0rem;
+        width: 100%;
+    }
+}
+
+
+.main-section {
+    /* margin-top:60px; */
+}
