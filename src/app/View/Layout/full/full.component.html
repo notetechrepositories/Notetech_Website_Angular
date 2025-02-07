@@ -10,20 +10,32 @@
             <li><a href="">Contact</a></li>
         </ul>
 
-        <div class="toggle-btn" (click)="toggleMenu()">
+        <!-- <div class="toggle-btn" (click)="toggleMenu()">
             <i [ngClass]="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
-        </div>
+        </div> -->
     </div>
 
-    <div class="toggle-menu" [class.open]="isMenuOpen">
+    <!-- <div class="toggle-menu" [class.open]="isMenuOpen">
         <li><a href="">Home</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Service</a></li>
         <li><a href="">Contact</a></li>
-    </div>
+    </div> -->
 </header>
 
 <main>
+    <div class="small-menu" [ngClass]="{'scrolled': isScrolled}">
+          <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" (change)="toggleMenu()"/>
+          <label for="menu-icon"></label>
+          <nav class="nav"> 		
+              <ul class="pt-5">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Service</a></li>
+                    <li><a href="">Contact</a></li>
+              </ul>
+          </nav>
+    </div>
     <section class="main-section">
         <router-outlet />
     </section>

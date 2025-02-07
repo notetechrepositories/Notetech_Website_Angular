@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { PagesRoutes } from './pages.routing.module';
 
+import { CountUpModule } from 'ngx-countup';
+
 
 
 @NgModule({
@@ -13,6 +15,7 @@ import { PagesRoutes } from './pages.routing.module';
     CommonModule,
     FormsModule,
     RouterModule.forChild(PagesRoutes),
+    CountUpModule
   ],
   declarations: [
     HomeComponent,

@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppNavItemComponent } from './Admin/Layout/admin-full/sidebar/NavItem/nav-item.component';
 import { BrandingComponent } from './Admin/Layout/admin-full/sidebar/branding.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { CountUpModule } from 'ngx-countup';
+
 
 
 
@@ -43,6 +45,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     MaterialModule,
     BrowserAnimationsModule,
     NgScrollbarModule,
+    CountUpModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
