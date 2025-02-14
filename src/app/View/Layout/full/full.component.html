@@ -1,21 +1,21 @@
-<header [ngClass]="{'scrolled': isScrolled}">
-    <div class="navbar">
-        <div class="logo">
-            <img src="assets/images/notetech-logo-light.png" alt="" width="200">
-        </div>
-        <ul class="links" >
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Service</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
+<header [ngClass]="{ scrolled: isScrolled }">
+  <div class="navbar">
+    <div class="logo">
+      <img src="{{ headerData.headerlogo }}" alt="" width="200" />
+    </div>
+    <ul class="links">
+      <li><a href="">Home</a></li>
+      <li><a href="">About</a></li>
+      <li><a href="">Service</a></li>
+      <li><a href="">Contact</a></li>
+    </ul>
 
-        <!-- <div class="toggle-btn" (click)="toggleMenu()">
+    <!-- <div class="toggle-btn" (click)="toggleMenu()">
             <i [ngClass]="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
         </div> -->
-    </div>
+  </div>
 
-    <!-- <div class="toggle-menu" [class.open]="isMenuOpen">
+  <!-- <div class="toggle-menu" [class.open]="isMenuOpen">
         <li><a href="">Home</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Service</a></li>
@@ -24,82 +24,156 @@
 </header>
 
 <main>
-    <div class="small-menu" [ngClass]="{'scrolled': isScrolled}">
-          <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" (change)="toggleMenu()"/>
-          <label for="menu-icon"></label>
-          <nav class="nav"> 		
-              <ul class="pt-5">
-                    <li><a routerLink="home">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a routerLink="service">Service</a></li>
-                    <li><a href="">Contact</a></li>
-              </ul>
-          </nav>
-    </div>
-    <section class="main-section">
-        <router-outlet />
-    </section>
+  <div class="small-menu" [ngClass]="{ scrolled: isScrolled }">
+    <input
+      class="menu-icon"
+      type="checkbox"
+      id="menu-icon"
+      name="menu-icon"
+      (change)="toggleMenu()"
+    />
+    <label for="menu-icon"></label>
+    <nav class="nav">
+      <ul class="pt-5">
+        <li><a routerLink="home">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a routerLink="service">Service</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <section class="main-section">
+    <router-outlet />
+  </section>
 </main>
 
 <footer class="custom-footer text-white py-5">
-    <div class="container">
-      <div class="row g-4">
-        <!-- Company Info -->
-        <div class="col-lg-4">
-          <h5 class="fw-bold mb-3">Notetech Software</h5>
-          <p class="opacity-75">Creating beautiful digital experiences with modern design solutions for forward-thinking
-            companies.</p>
-          <div class="d-flex gap-2 mt-4">
-            <a href="#" class="social-btn">
-              <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
-                <path
-                  d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-              </svg>
-            </a>
-            <a href="#" class="social-btn">
-              <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
-                <path
-                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-            <a href="#" class="social-btn">
-              <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
-                <path
-                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-  
-        <!-- Quick Links -->
-        <div class="col-lg-2 col-md-4">
-          <h6 class="fw-bold mb-3">Navigation</h6>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="#" class="link-footer">About</a></li>
-            <li class="mb-2"><a href="#" class="link-footer">Services</a></li>
-            <li class="mb-2"><a href="#" class="link-footer">Portfolio</a></li>
-            <li class="mb-2"><a href="#" class="link-footer">Contact</a></li>
-          </ul>
-        </div>
-  
-        <!-- Newsletter -->
-        <div class="col-lg-4">
-          <h6 class="fw-bold mb-3">Subscribe</h6>
-          <p class="opacity-75">Get the latest news and updates.</p>
-          <div class="input-group mt-3">
-            <input type="email" class="input-subscribe" placeholder="Enter your email">
-            <button class="btn btn-light px-4" type="button">Subscribe</button>
-          </div>
+  <div class="container">
+    <div class="row g-4">
+      <!-- Company Info -->
+      <div class="col-lg-4">
+        <h5 class="fw-bold mb-3">{{ footerData.companyName }}</h5>
+        <p class="opacity-75">
+          {{ footerData.footerDescription }}
+        </p>
+        <div class="d-flex gap-2 mt-4">
+          <!-- LinkedIn -->
+          <a
+            href="{{ footerData.linkedin }}"
+            class="social-btn"
+            *ngIf="footerData.linkedin"
+          >
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s0.784-1.764 1.75-1.764 1.75.79 1.75 1.764-0.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              />
+            </svg>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="{{ footerData.github }}"
+            class="social-btn"
+            *ngIf="footerData.github"
+          >
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387 0.599 0.111 0.793-0.261 0.793-0.577v-2.234c-3.338 0.726-4.033-1.416-4.033-1.416-0.546-1.387-1.333-1.756-1.333-1.756-1.089-0.745 0.083-0.729 0.083-0.729 1.205 0.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492 0.997 0.107-0.775 0.418-1.305 0.762-1.604-2.665-0.305-5.467-1.334-5.467-5.931 0-1.311 0.469-2.381 1.236-3.221-0.124-0.303-0.535-1.524 0.117-3.176 0 0 1.008-0.322 3.301 1.23 0.957-0.266 1.983-0.399 3.003-0.404 1.02 0.005 2.047 0.138 3.006 0.404 2.291-1.552 3.297-1.23 3.297-1.23 0.653 1.653 0.242 2.874 0.118 3.176 0.77 0.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921 0.43 0.372 0.823 1.102 0.823 2.222v3.293c0 0.319 0.192 0.694 0.801 0.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+
+          <!-- Twitter -->
+          <a
+            href="{{ footerData.twitter }}"
+            class="social-btn"
+            *ngIf="footerData.twitter"
+          >
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-0.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-0.806-.026-1.566-.247-2.229-.616-0.054 2.281 1.581 4.415 3.949 4.89-0.693.188-1.452.232-2.224.084 0.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646 0.962-.695 1.797-1.562 2.457-2.549z"
+              />
+            </svg>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="{{ footerData.facebook }}"
+            class="social-btn"
+            *ngIf="footerData.facebook"
+          >
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M22.675 0h-21.35c-0.732 0-1.325 0.593-1.325 1.325v21.351c0 0.732 0.593 1.324 1.325 1.324h11.495v-9.294h-3.13v-3.622h3.13v-2.671c0-3.1 1.894-4.785 4.662-4.785 1.325 0 2.462 0.099 2.794 0.143v3.24h-1.918c-1.504 0-1.794 0.714-1.794 1.764v2.309h3.587l-0.467 3.622h-3.12v9.294h6.116c0.732 0 1.324-0.593 1.324-1.324v-21.351c0-0.732-0.593-1.325-1.324-1.325z"
+              />
+            </svg>
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="{{ footerData.instagram }}"
+            class="social-btn"
+            *ngIf="footerData.instagram"
+          >
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584 0 4.85.07 1.206.056 2.04.247 2.547.412.642.207 1.1.455 1.586.941.486.486.734.944.941 1.586.165.507.356 1.341.412 2.547.07 1.266.07 1.646.07 4.85s0 3.584-.07 4.85c-.056 1.206-.247 2.04-.412 2.547-.207.642-.455 1.1-.941 1.586-.486.486-.944.734-1.586.941-.507.165-1.341.356-2.547.412-1.266.07-1.646.07-4.85.07s-3.584 0-4.85-.07c-1.206-.056-2.04-.247-2.547-.412-.642-.207-1.1-.455-1.586-.941-.486-.486-.734-.944-.941-1.586-.165-.507-.356-1.341-.412-2.547-.07-1.266-.07-1.646-.07-4.85s0-3.584.07-4.85c.056-1.206.247-2.04.412-2.547.207-.642.455-1.1.941-1.586.486-.486.944-.734 1.586-.941.507-.165 1.341-.356 2.547-.412 1.266-.07 1.646-.07 4.85-.07M12 0c-3.259 0-3.667 0-4.95.07-1.282.056-2.165.247-2.922.412-.83.207-1.462.455-2.119 1.113-.656.657-.906 1.29-1.113 2.119-.165.757-.356 1.64-.412 2.922C0 8.333 0 8.741 0 12s0 3.667.07 4.95c.056 1.282.247 2.165.412 2.922.207.83.455 1.462 1.113 2.119.657.656 1.29.906 2.119 1.113.757.165 1.64.356 2.922.412C8.333 24 8.741 24 12 24s3.667 0 4.95-.07c1.282-.056 2.165-.247 2.922-.412.83-.207 1.462-.455 2.119-1.113.656-.657.906-1.29 1.113-2.119.165-.757.356-1.64.412-2.922C24 15.667 24 15.259 24 12s0-3.667-.07-4.95c-.056-1.282-.247-2.165-.412-2.922-.207-.83-.455-1.462-1.113-2.119-.657-.656-1.29-.906-2.119-1.113-.757-.165-1.64-.356-2.922-.412C15.667 0 15.259 0 12 0z"
+              />
+              <path
+                d="M12 5.838c-3.403 0-6.162 2.76-6.162 6.162s2.76 6.162 6.162 6.162 6.162-2.76 6.162-6.162-2.76-6.162-6.162-6.162zm0 10.162c-2.214 0-4-1.786-4-4s1.786-4 4-4 4 1.786 4 4-1.786 4-4 4z"
+              />
+              <circle cx="18.406" cy="5.594" r="1.44" />
+            </svg>
+          </a>
+
+          <!-- WhatsApp -->
+          <a
+            href="{{ footerData.whatsapp }}"
+            class="social-btn"
+            *ngIf="footerData.whatsapp"
+          >
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.263-.132-1.553-.765-1.794-.854-.24-.088-.414-.132-.588.132s-.675.854-.829 1.026c-.154.176-.307.198-.57.066-.263-.132-1.11-.407-2.114-1.297-.78-.693-1.311-1.554-1.464-1.818-.154-.263-.016-.405.117-.535.122-.122.263-.307.395-.456.132-.154.176-.263.263-.438.088-.176.044-.33-.022-.463-.066-.132-.588-1.41-.805-1.947-.212-.51-.427-.44-.588-.447-.154-.007-.33-.009-.506-.009-.176 0-.464.066-.708.33-.231.264-.926.907-.926 2.219s.947 2.568 1.08 2.748c.132.176 1.867 2.848 4.533 3.991 2.666 1.142 2.666.762 3.15.717.483-.044 1.553-.635 1.771-1.248.218-.614.218-1.14.154-1.248-.066-.106-.241-.176-.506-.307zM12.007 2c-5.515 0-10 4.485-10 10 0 1.762.46 3.478 1.336 4.986l-1.446 5.015 5.132-1.347c1.448.79 3.084 1.201 4.978 1.201 5.515 0 10-4.485 10-10s-4.485-10-10-10zm0 18c-1.623 0-3.184-.44-4.55-1.277l-.326-.195-3.048.799.814-2.942-.212-.331c-.79-1.24-1.207-2.673-1.207-4.053 0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"
+              />
+            </svg>
+          </a>
         </div>
       </div>
-  
-      <hr class="my-4 opacity-25">
-  
-      <!-- Copyright -->
-      <div class="row align-items-center">
-        <div class="col-md-12 text-center text-md-center">
-          <small class="opacity-75">© 2025 Notetech Software. All rights reserved.</small>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-4">
+        <h6 class="fw-bold mb-3">Navigation</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" class="link-footer">About</a></li>
+          <li class="mb-2"><a href="#" class="link-footer">Services</a></li>
+          <li class="mb-2"><a href="#" class="link-footer">Portfolio</a></li>
+          <li class="mb-2"><a href="#" class="link-footer">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-lg-4">
+        <h6 class="fw-bold mb-3">Subscribe</h6>
+        <p class="opacity-75">Get the latest news and updates.</p>
+        <div class="input-group mt-3">
+          <input
+            type="email"
+            class="input-subscribe"
+            placeholder="Enter your email"
+          />
+          <button class="btn btn-light px-4" type="button">Subscribe</button>
         </div>
       </div>
     </div>
+
+    <hr class="my-4 opacity-25" />
+
+    <!-- Copyright -->
+    <div class="row align-items-center">
+      <div class="col-md-12 text-center text-md-center">
+        <small class="opacity-75">© {{ footerData.copyRights }} </small>
+      </div>
+    </div>
+  </div>
 </footer>
