@@ -1,6 +1,6 @@
 .section-1 {
     height: 100vh;
-    background: radial-gradient(circle, rgba(16,27,85,1) 0%, rgba(0,0,0,1) 65%);
+    background: linear-gradient(135deg, #013f76 0%, #006cb6 100%)
     
 }
 
@@ -400,8 +400,6 @@
   }
 
   .section-4 .technology-card{
-    
-    height: 50vh;
     padding: 20px;
     border-radius: 20px;
 
@@ -413,6 +411,395 @@
   }
 
 /*  */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+.slider {
+  height: 150px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.slider::before, .slider::after {
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+.slider .slide-track {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+}
+.slider .slide {
+  height: 100px;
+  width: 250px;
+  padding-left: 20px;
+}
+
+.tech-content .tech-card {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+              rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+              rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+              rgba(0, 0, 0, 0.06) 0px 2px 1px, 
+              rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+              rgba(0, 0, 0, 0.09) 0px 8px 4px, 
+              rgba(0, 0, 0, 0.09) 0px 16px 8px, 
+              rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: var(--blue4);
+  color: #fff;
+  height: 11rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for scaling and shadow */
+}
+
+.tech-content .tech-card:hover {
+  transform: scale(1.05); /* Smooth scaling on hover */
+}
+
+@media (max-width: 992px) {
+  .tech-content{
+    margin-left: 20px;
+  }
+}
+
+/* Testimonial */
+
+.testimonial-section{
+  padding:30px 0px 30px 0px;
+}
+
+.testimonial-section .container{
+  padding:20px;
+}
+
+.testimonial-section h1{
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+@media (max-width: 992px) {
+  .testimonial-section h1,p{
+    text-align: center;
+  }
+  .testimonial-section h1{
+    font-size: 2.5rem;
+  }
+  .slider__txt {
+    font-size: 18px;
+  }
+
+}
+
+.testimonials-section {
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 550px;
+}
+.slider__nav {
+  width: 12px;
+  height: 12px;
+  margin: 80px 12px;
+  border-radius: 50%;
+  z-index: 10;
+  outline: 6px solid #ccc;
+  outline-offset: -6px;
+  box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.slider__nav:checked {
+  -webkit-animation: check 0.4s linear forwards;
+  animation: check 0.4s linear forwards;
+}
+.slider__nav:checked:nth-of-type(1) ~ .slider__inner {
+  left: 0%;
+  top: 24%;
+}
+.slider__nav:checked:nth-of-type(2) ~ .slider__inner {
+  left: -100%;
+}
+.slider__nav:checked:nth-of-type(3) ~ .slider__inner {
+  left: -200%;
+}
+.slider__nav:checked:nth-of-type(4) ~ .slider__inner {
+  left: -300%;
+}
+.slider__nav:checked:nth-of-type(5) ~ .slider__inner {
+  left: -400%;
+}
+.slider__inner {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 500%;
+  align-items: center;
+  height: auto;
+  -webkit-transition: left 0.4s;
+  transition: left 0.4s;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+.slider__contents {
+  height: 100%;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.slider__caption {
+  font-size: 14px;
+  color: #111;
+  opacity: .5;
+}
+.slider__txt {
+  font-size: 17px;
+  font-weight:400;
+  line-height: 1.7;
+  color: #111;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  max-width: 750px;
+}
+blockquote {
+  font-family: 'Arial';
+  font-weight: bold;
+  font-size: 100px;
+  color: var(--blue4);
+  margin-bottom: 0;
+}
+
+@-webkit-keyframes check {
+  50% {
+    outline-color: #333;
+    box-shadow: 0 0 0 12px #333, 0 0 0 36px rgba(51, 51, 51, 0.2);
+  }
+  100% {
+    outline-color: #333;
+    box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
+  }
+}
+
+@keyframes check {
+  50% {
+    outline-color: #333;
+    box-shadow: 0 0 0 12px #333, 0 0 0 36px rgba(51, 51, 51, 0.2);
+  }
+  100% {
+    outline-color: #333;
+    box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
+  }
+}
+
+/* Our office */
+
+.office-section{
+    padding:30px 0px 30px 0px;
+    margin-bottom: 20px;
+  }
+
+  .office-section .container {
+    margin: 10px;
+    width: 900px;
+    margin: auto;
+    max-width: 100%;
+  }
+
+  .office-section .container h1{
+    font-size: 3.5rem;
+    font-weight: 600;
+  }
+
+  /* ========= */
+  .map_container {
+    position: relative;
+  }
+  
+  .map_container img {
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 30px;
+  }
+  
+  .map_marker {
+    display: block;
+    width: 7px;
+    height: 7px;
+    background-color: #0ff;
+    border-radius: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .map_marker::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 255, .15) 0, transparent 100%);
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+  }
+  
+  .dot_india {
+    top: 46.5%;
+    left: 69.5%;
+  }
+  
+  .dot_france {
+    top: 36%;
+    left: 49%;
+  }
+  
+  .marker_info {
+    display: block;
+    position: absolute;
+    top: 14px;
+    left: 100%;
+    width: 300px;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5); /* Color after scrolling */
+    backdrop-filter: blur(15px);
+    transition: all 0.5s ease-in-out;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .marker_info:hover {
+    background: rgba(0, 0, 0, 0.9); /* Darker background */
+    opacity: 1; /* Fully visible on hover */
+    scale: 1.01;
+    transition: all 0.5s ease-in-out;
+}
+  
+  .marker_info img {
+    width: 100px;
+    opacity: 0;
+    transition: all 1s ease;
+    transform: translateY(10px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+  
+  .marker_info p {
+    opacity: 0;
+    transition: all 1.6s ease;
+    transform: translateY(10px);
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.2s;
+    margin-top: 0;
+  }
+  
+  @keyframes fadeUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Show marker info when active */
+  .marker_info.visible {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    .map_container {
+      padding-top: 20px;
+    }
+  
+    .map_marker {
+      width: 10px;
+      height: 10px;
+    }
+  
+    .marker_info img {
+      width: 70px;
+    }
+  
+    .map_container {
+      width: calc(100% + 208px);
+      margin: auto;
+      margin-left: -100px;
+      overflow-x: hidden;
+    }
+  
+    .mobile_view_restrict {
+      overflow: hidden;
+    }
+
+    .marker_info {
+      left:-100px;
+    }
+  }
+  
+  
+
+  /* ========= */
 
 
   /*-------------------------- Button----------------------------- */

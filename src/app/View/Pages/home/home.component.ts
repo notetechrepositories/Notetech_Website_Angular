@@ -46,5 +46,33 @@ export class HomeComponent {
     observer.observe(this.counterElement.nativeElement);
   }
 
+  //==================================================================
+
+  activeLocation: string | null = null;
+  isMobile: boolean = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  showLocationInfo(location: string) {
+    if (!this.isMobile) {
+      this.activeLocation = location;
+    }
+  }
+
+  hideLocationInfo(location: string) {
+    if (!this.isMobile) {
+      if (this.activeLocation === location) {
+        this.activeLocation = null;
+      }
+    }
+  }
+
+  toggleLocationInfo(location: string) {
+    if (this.isMobile) {
+      this.activeLocation = this.activeLocation === location ? null : location;
+    }
+  }
+  redirectToMap(url: string) {
+    window.open(url, '_blank'); // Open Google Maps in a new tab
+  }
+
 
 }

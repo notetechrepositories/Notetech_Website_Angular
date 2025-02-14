@@ -412,5 +412,56 @@ header.scrolled {
       font-size: 8vh;
     }
   }
-  
+
+
+
+  /* ------------ Footer ----------- */
+
+  .custom-footer {
+    background: linear-gradient(135deg, #013f76 0%, #006cb6 100%)
+}
+
+.social-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.link-footer {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-footer:hover {
+    color: #ffffff;
+}
+
+.input-subscribe {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.input-subscribe::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.input-subscribe:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: none;
+}
+
   

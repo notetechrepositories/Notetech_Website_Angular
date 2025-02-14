@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PagesRoutes } from './pages.routing.module';
 
 import { CountUpModule } from 'ngx-countup';
+import { ServiceComponent } from './service/service.component';
 
 
 
@@ -19,6 +20,7 @@ import { CountUpModule } from 'ngx-countup';
   ],
   declarations: [
     HomeComponent,
+    ServiceComponent
   ],
   exports: [],
 })
