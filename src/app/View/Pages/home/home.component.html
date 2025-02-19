@@ -121,13 +121,13 @@
     <div class="container">
       <div class="row w-100">
         <div class="col-md-6">
-          <p class="text-blue">{{ homePageAboutUs.subTitle }}</p>
+          <p class="text-blue">{{ aboutUs.light_title }}</p>
           <h1>
-            {{ homePageAboutUs.title }}<br />
-            <span class="text-blue">{{ homePageAboutUs.subDescription }}</span>
+            {{ aboutUs.home_title }}<br />
+            <span class="text-blue">{{ aboutUs.home_sub_title }}</span>
           </h1>
           <div class="content">
-            <p>{{ homePageAboutUs.description }}</p>
+            <p>{{ aboutUs.home_description }}</p>
           </div>
           <button href="#" class="read-more-btn">
             <span class="read-more-btn__icon-wrapper">
@@ -172,7 +172,9 @@
             <div class="service-heading text-center">
               <!-- <h2>What We <span>Offer</span></h2> -->
               <h2 [innerHTML]="safeServiceTitle"></h2>
-              <p class="text-blue">{{ homePageService.subTitle }}</p>
+              <p class="text-blue">
+                {{ pageDetailsContentOneModel.light_title }}
+              </p>
             </div>
           </div>
         </div>
@@ -181,12 +183,14 @@
         >
           <div
             class="col-md-4 col-sm-6 equal-height"
-            *ngFor="let service of homePageService.service | slice : 0 : 6"
+            *ngFor="
+              let page of pageDetailsContentOneModel.pagesModels | slice : 0 : 6
+            "
           >
             <div class="item">
-              <i [class]="service.icon"></i>
-              <h4>{{ service.title }}</h4>
-              <p>{{ service.description }}</p>
+              <i class="fas fa-pen-fancy"></i>
+              <h4>{{ page.home_content_title }}</h4>
+              <p>{{ page.home_content_description }}</p>
             </div>
           </div>
         </div>
@@ -257,7 +261,7 @@
   <div class="container">
     <div class="technology-card">
       <p class="text-blue text-center mb-0">
-        {{ homePageTestimonial.subTitle }}
+        {{ pageDetailsContentTwoModel.light_title }}
       </p>
       <h1 class="text-center" [innerHTML]="safeTestimonialTitle"></h1>
       <div class="slider mt-5">
@@ -411,35 +415,16 @@
       </div>
       <div class="tech-content">
         <div class="row w-100 d-flex justify-content-center">
-          <div class="col-md-4 col-sm-12">
+          <div
+            class="col-md-4 col-sm-12"
+            *ngFor="
+              let page of pageDetailsContentTwoModel.pagesModels | slice : 0 : 3
+            "
+          >
             <div class="card tech-card text-center mb-3">
               <div class="card-body">
-                <h3 class="card-title">Front End</h3>
-                <p class="card-text">
-                  Modern frameworks and libraries for building responsive and
-                  interactive user interfaces.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="card tech-card text-center mb-3">
-              <div class="card-body">
-                <h3 class="card-title">Back End</h3>
-                <p class="card-text">
-                  Robust server-side technologies for scalable and secure
-                  applications.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="card tech-card text-center mb-3">
-              <div class="card-body">
-                <h3 class="card-title">Mobile & Cloud</h3>
-                <p class="card-text">
-                  Cross-platform development and cloud infrastructure solutions.
-                </p>
+                <h3 class="card-title">{{ page.home_content_title }}</h3>
+                <p class="card-text">{{ page.home_content_description }}</p>
               </div>
             </div>
           </div>
@@ -551,16 +536,32 @@
           (click)="toggleLocationInfo('india')"
         >
           <div
+            *ngIf="!footerData.map_address"
             class="marker_info"
             [ngClass]="{ visible: activeLocation === 'india' }"
-            (click)="redirectToMap('https://maps.app.goo.gl/tDz3wuS3mV6tpz2v9')"
+            (click)="
+              redirectToMap(footerData.google_map ? footerData.google_map : '#')
+            "
           >
             <!-- <img src="https://i.ibb.co/X2WNSXX/istanbul-icon.png" alt="India Icon"> -->
-            <p>
+            <p><strong>India</strong><br /></p>
+          </div>
+
+          <div
+            *ngIf="footerData.map_address"
+            class="marker_info"
+            [ngClass]="{ visible: activeLocation === 'india' }"
+            (click)="
+              redirectToMap(footerData.google_map ? footerData.google_map : '#')
+            "
+          >
+            <!-- <img src="https://i.ibb.co/X2WNSXX/istanbul-icon.png" alt="India Icon"> -->
+            <!-- <p>
               <strong>India</strong><br />
               <strong>Notetech Software</strong><br />
               Pcra 77, Pc Road, Azad Rd, Kaloor, Ernakulam, Kerala 682017
-            </p>
+            </p> -->
+            <p [innerHTML]="safeMapAddress"></p>
           </div>
         </div>
       </div>

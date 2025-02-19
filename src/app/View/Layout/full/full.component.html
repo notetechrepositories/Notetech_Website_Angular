@@ -1,7 +1,7 @@
 <header [ngClass]="{ scrolled: isScrolled }">
   <div class="navbar">
     <div class="logo">
-      <img src="{{ headerData.headerlogo }}" alt="" width="200" />
+      <img src="{{ footerData.header_logo }}" alt="" width="200" />
     </div>
     <ul class="links">
       <li><a href="">Home</a></li>
@@ -52,9 +52,9 @@
     <div class="row g-4">
       <!-- Company Info -->
       <div class="col-lg-4">
-        <h5 class="fw-bold mb-3">{{ footerData.companyName }}</h5>
+        <h5 class="fw-bold mb-3">{{ footerData.office_name }}</h5>
         <p class="opacity-75">
-          {{ footerData.footerDescription }}
+          {{ footerData.footer_description }}
         </p>
         <div class="d-flex gap-2 mt-4">
           <!-- LinkedIn -->
@@ -172,7 +172,7 @@
     <!-- Copyright -->
     <div class="row align-items-center">
       <div class="col-md-12 text-center text-md-center">
-        <small class="opacity-75">© {{ footerData.copyRights }} </small>
+        <small class="opacity-75">© {{ footerData.copy_rights }} </small>
       </div>
     </div>
   </div>

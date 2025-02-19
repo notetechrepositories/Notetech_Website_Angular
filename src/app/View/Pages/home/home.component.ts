@@ -1,15 +1,87 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { SettingsService } from '../../../Services/User/settings.service';
+import { FooterData } from '../../Layout/full/full.component';
+
+export interface AboutUs {
+  light_title: string;
+  home_title: string;
+  home_sub_title: string;
+  home_description: string;
+  page_title: string | null;
+  page_sub_title: string | null;
+  page_description: string | null;
+  sub_title: string | null;
+  title: string | null;
+  description: string | null;
+  page_background_image: string | null;
+  description_image: string | null;
+}
+
+export interface PagesModel {
+  id?: string;
+  light_title?: string;
+  home_title: string;
+  home_sub_title?: string;
+  home_description: string;
+  page_title?: string;
+  page_sub_title?: string;
+  page_description?: string;
+  sub_title?: string;
+  title?: string;
+  description?: string;
+  page_background_image?: string;
+  description_image?: string;
+  slug?: string;
+  priority?: number;
+}
+
+export interface PageContentModel {
+  page_id?: string;
+  home_content_title?: string;
+  home_content_description?: string;
+  home_image?: string;
+  read_more?: number;
+  page_slug?: string;
+}
+
+export interface PageDetailsContentModel extends PagesModel {
+  pagesModels?: PageContentModel[]; // Optional array
+}
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   glowIntensity: number = 1;
   startCounter = false; // Flag to activate the counter
+  aboutUs!: PagesModel;
+  pageDetailsContentModel: PageDetailsContentModel[] = [];
+  // PageDetailsContentModel objects initialization
+  // Initialize with required fields
+  pageDetailsContentOneModel: PageDetailsContentModel = {
+    id: '',
+    slug: '',
+    title: '',
+    description: '',
+    priority: 0,
+    home_title: '',         // Required field
+    home_description: '',   // Required field
+    pagesModels: []         // Empty array to match the expected structure
+  };
 
+  pageDetailsContentTwoModel: PageDetailsContentModel = {
+    id: '',
+    slug: '',
+    title: '',
+    description: '',
+    priority: 0,
+    home_title: '',         // Required field
+    home_description: '',   // Required field
+    pagesModels: []         // Empty array to match the expected structure
+  };
 
 
   homePageTestimonial = {
@@ -17,13 +89,20 @@ export class HomeComponent {
     subTitle: "TESTIMONIALS",
   };
 
-  safeServiceTitle: SafeHtml;
-  safeTestimonialTitle: SafeHtml;
+  safeServiceTitle!: SafeHtml;
+  safeTestimonialTitle!: SafeHtml;
+  footerData!: FooterData;
+  safeMapAddress!: SafeHtml;
 
-  constructor(private sanitizer: DomSanitizer) {
-    this.safeServiceTitle = this.sanitizer.bypassSecurityTrustHtml(this.homePageService.title);
-    this.safeTestimonialTitle = this.sanitizer.bypassSecurityTrustHtml(this.homePageTestimonial.title);
+  constructor(private sanitizer: DomSanitizer, private settings: SettingsService) {
+
+
   }
+  async ngOnInit() {
+    await this.getSettings()
+
+  }
+
   homePageAboutUs = {
     subTitle: "GET TO KNOW US",
     title: "Empowering Your Digital Growth with Offshore",
@@ -36,7 +115,7 @@ export class HomeComponent {
     subTitle: "OUR SERVICES",
     service: [
       { icon: "fas fa-pen-fancy", title: "Project Creation", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-      { icon: "fas fa-dharmachakra", title: "Software Development", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
+      { icon: "fas fa-dharmachakra", title: "Software Development", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry2." },
       { icon: "fas fa-tasks", title: "Project Management", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
       { icon: "fas fa-tachometer-alt", title: "Project Implementation", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
       { icon: "fas fa-recycle", title: "Software Update", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
@@ -111,6 +190,56 @@ export class HomeComponent {
   redirectToMap(url: string) {
     window.open(url, '_blank'); // Open Google Maps in a new tab
   }
+  getSettings() {
 
+
+    this.settings.getContent().subscribe({
+      next: (res) => {
+        if (res.status == 200) {
+
+          this.footerData = res.data.settings;
+          this.pageDetailsContentModel = res.data.pageContent;
+
+          const aboutUsPage = this.pageDetailsContentModel.find(
+            (page: PageDetailsContentModel) => page.slug === 'about-us'
+          );
+          const sortedPages = this.pageDetailsContentModel
+            .filter((page: PageDetailsContentModel) => page.slug !== 'about-us')
+            .sort((a, b) => (a.priority || 0) - (b.priority || 0)); // Sorting by priority, ensure default value if undefined
+
+
+          if (sortedPages) {
+            this.pageDetailsContentOneModel = sortedPages[0];
+            this.pageDetailsContentTwoModel = sortedPages[1];
+            this.safeServiceTitle = this.sanitizer.bypassSecurityTrustHtml(this.pageDetailsContentOneModel.home_title);
+            this.safeTestimonialTitle = this.sanitizer.bypassSecurityTrustHtml(this.pageDetailsContentTwoModel.home_title);
+          }
+
+
+
+
+          console.log(this.pageDetailsContentOneModel);
+          console.log(this.pageDetailsContentTwoModel);
+
+          if (aboutUsPage) {
+            this.aboutUs = aboutUsPage;
+          }
+
+          if (this.footerData && this.footerData.map_address) {
+            console.log(this.footerData.map_address);
+
+            this.safeMapAddress = this.sanitizer.bypassSecurityTrustHtml(this.footerData.map_address);
+          }
+
+        } else {
+          // this.showError(res.message);
+        }
+      },
+      error: (error) => {
+        // this.showError('Something went wrong. Please try again.');
+
+      }
+    });
+  }
 
 }
