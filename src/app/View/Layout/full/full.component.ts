@@ -49,13 +49,13 @@ export class FullComponent implements OnInit {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
 
-    if (this.isMenuOpen) {
-      // Disable scrolling
-      this.renderer.setStyle(document.body, 'overflow', 'hidden');
-    } else {
-      // Enable scrolling
-      this.renderer.removeStyle(document.body, 'overflow');
-    }
+    // if (this.isMenuOpen) {
+    //   // Disable scrolling
+    //   this.renderer.setStyle(document.body, 'overflow', 'hidden');
+    // } else {
+    //   // Enable scrolling
+    //   this.renderer.removeStyle(document.body, 'overflow');
+    // }
   }
   getSettings() {
 

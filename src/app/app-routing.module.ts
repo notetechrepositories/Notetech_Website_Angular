@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FullComponent } from './View/Layout/full/full.component';
 import { PagesModule } from './View/Pages/pages.module';
 import { AdminFullComponent } from './Admin/Layout/admin-full/admin-full.component';
+import { HomeComponent } from './View/Pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,12 @@ const routes: Routes = [
         redirectTo: '/home',
         pathMatch: 'full',
       },
+      // {
+      //   path: 'home',
+      //   component:HomeComponent
+      // },
       {
-        path: 'home',
+        path: '',
         loadChildren: () =>
           import('./View/Pages/pages.module').then((m) => PagesModule),
       },
