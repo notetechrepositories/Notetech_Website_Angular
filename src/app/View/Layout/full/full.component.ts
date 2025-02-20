@@ -33,9 +33,6 @@ export class FullComponent implements OnInit {
 
 
 
-  headerData = {
-    headerlogo: "assets/images/notetech-logo-light.png"
-  }
   constructor(private renderer: Renderer2, private sttings: SettingsService) { }
   async ngOnInit() {
     await this.getSettings()
@@ -83,8 +80,5 @@ export class FullComponent implements OnInit {
       }
     });
   }
-
-
-
 
 }

@@ -179,12 +179,42 @@
           </div>
         </div>
         <div
+          class="slider"
+          *ngIf="pageDetailsContentOneModel.pagesModels?.length != 0"
+        >
+          <div class="slide-track">
+            <div
+              class="slide"
+              *ngFor="let pageDetail of pageDetailsContentOneModel.pagesModels"
+            >
+              <img
+                src="{{ pageDetail.home_image }}"
+                height="150"
+                width="350"
+                alt="{{ pageDetail.home_image }}"
+              />
+            </div>
+            <div
+              class="slide"
+              *ngFor="let pageDetail of pageDetailsContentOneModel.pagesModels"
+            >
+              <img
+                src="{{ pageDetail.home_image }}"
+                height="150"
+                width="350"
+                alt="{{ pageDetail.home_image }}"
+              />
+            </div>
+          </div>
+        </div>
+        <div
           class="row our-offer-items less-carousel w-100 d-flex justify-content-center"
+          *ngIf="pageDetailsContentOneModel.section_two?.length != 0"
         >
           <div
             class="col-md-4 col-sm-6 equal-height"
             *ngFor="
-              let page of pageDetailsContentOneModel.pagesModels | slice : 0 : 6
+              let page of pageDetailsContentOneModel.section_two | slice : 0 : 6
             "
           >
             <div class="item">
@@ -264,167 +294,50 @@
         {{ pageDetailsContentTwoModel.light_title }}
       </p>
       <h1 class="text-center" [innerHTML]="safeTestimonialTitle"></h1>
-      <div class="slider mt-5">
+      <div
+        class="slider mt-5"
+        *ngIf="pageDetailsContentTwoModel.pagesModels?.length != 0"
+      >
         <div class="slide-track">
-          <div class="slide">
+          <div
+            class="slide"
+            *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels"
+          >
             <img
-              src="assets/images/icons/angular-logo.png"
+              src="{{ pageDetail.home_image }}"
               height="150"
               width="350"
-              alt=""
+              alt="{{ pageDetail.home_image }}"
             />
           </div>
-          <div class="slide">
+          <div
+            class="slide"
+            *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels"
+          >
             <img
-              src="assets/images/icons/dotnet-logo.png"
+              src="{{ pageDetail.home_image }}"
               height="150"
               width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/aws-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/azure-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/devops-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/flutter-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/nodejs-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/oracle-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/ios-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <!--  -->
-          <div class="slide">
-            <img
-              src="assets/images/icons/angular-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/dotnet-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/aws-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/azure-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/devops-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/flutter-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/nodejs-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/oracle-logo.png"
-              height="150"
-              width="350"
-              alt=""
-            />
-          </div>
-          <div class="slide">
-            <img
-              src="assets/images/icons/ios-logo.png"
-              height="150"
-              width="350"
-              alt=""
+              alt="{{ pageDetail.home_image }}"
             />
           </div>
         </div>
       </div>
-      <div class="tech-content">
+      <div
+        class="tech-content"
+        *ngIf="pageDetailsContentTwoModel.section_two?.length != 0"
+      >
         <div class="row w-100 d-flex justify-content-center">
           <div
             class="col-md-4 col-sm-12"
             *ngFor="
-              let page of pageDetailsContentTwoModel.pagesModels | slice : 0 : 3
+              let item of pageDetailsContentTwoModel.section_two | slice : 0 : 3
             "
           >
             <div class="card tech-card text-center mb-3">
               <div class="card-body">
-                <h3 class="card-title">{{ page.home_content_title }}</h3>
-                <p class="card-text">{{ page.home_content_description }}</p>
+                <h3 class="card-title">{{ item.home_content_title }}</h3>
+                <p class="card-text">{{ item.home_content_description }}</p>
               </div>
             </div>
           </div>
