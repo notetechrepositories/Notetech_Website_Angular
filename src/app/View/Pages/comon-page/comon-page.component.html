@@ -1,0 +1,59 @@
+<section class="header-banner">
+  <div class="overlay">
+    <div class="header-title">
+      <h1 [innerHTML]="pageTitle"></h1>
+      <p>{{ pageContent.page_description }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="service-content">
+  <div class="top-header p-3">
+    <div class="container mt-4">
+      <p class="text-blue mb-0">{{ pageContent.sub_title }}</p>
+      <h1 [innerHTML]="title"></h1>
+    </div>
+  </div>
+
+  <div class="content mt-5">
+    <div class="container">
+      <div
+        *ngFor="let content of pageContent.pagesModels; let i = index"
+        class="row w-100 mb-3 shadow p-3"
+      >
+        <!-- Conditionally show image only if home_image is not empty -->
+        <div
+          *ngIf="content.home_image"
+          class="col-md-4 d-flex"
+          [ngClass]="{ 'order-md-2': i % 2 !== 0 }"
+        >
+          <div class="sleft-card">
+            <img [src]="content.home_image" alt="Service Image" />
+          </div>
+        </div>
+
+        <!-- Adjust text column width based on image presence -->
+        <div
+          [ngClass]="{
+            'col-md-8': content.home_image,
+            'col-md-12': !content.home_image
+          }"
+        >
+          <div class="sright-card">
+            <h4>{{ content.home_content_title }}</h4>
+            <p>{{ content.home_content_description }}</p>
+
+            <!-- Show Read More button only if read_more is 1 -->
+            <a
+              *ngIf="content.read_more === 1"
+              [routerLink]="['/', content.page_slug]"
+              class="btn btn-primary"
+            >
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

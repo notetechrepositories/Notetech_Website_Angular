@@ -8,6 +8,7 @@ import { PagesRoutes } from './pages.routing.module';
 
 import { CountUpModule } from 'ngx-countup';
 import { ServiceComponent } from './service/service.component';
+import { ComonPageComponent } from './comon-page/comon-page.component';
 
 
 
@@ -20,8 +21,9 @@ import { ServiceComponent } from './service/service.component';
   ],
   declarations: [
     HomeComponent,
-    ServiceComponent
+    ServiceComponent,
+    ComonPageComponent
   ],
   exports: [],
 })
-export class PagesModule {}
+export class PagesModule { }
