@@ -1,0 +1,109 @@
+/* ======================= */
+.text-blue-glow{
+  
+    text-shadow:
+    0 0 7px #05f1f978, 0 0 10px #05f1f900, 0 0 21px #05f1f961, 0 0 42px #0a75bd, 0 0 82px #0a75bd, 0 0 92px #0a75bd, 0 0 102px #0a75bd, 0 0 151px #0a75bd00
+     
+}
+
+.text-blue-glow-2{
+  
+  text-shadow:
+    0 0 7px #05a0a5,
+    0 0 10px #05bbc2,
+    0 0 21px #034346,
+    0 0 42px #0a75bd,
+    0 0 82px #0a75bd,
+    0 0 92px #0a75bd,
+    0 0 102px #0a75bd,
+    0 0 151px #0a75bd;
+   
+}
+
+
+.text-blue{
+    color: #0a75bd;
+}
+
+.text-gray{
+  color: gray;
+}
+/* ======================= */
+
+
+.header-banner {
+    height: 86vh;
+    background: url('/assets/images/technologies-bg.jpg'); /* Corrected path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.541);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.header-banner .header-title{
+    max-width: 60%;
+}
+
+
+
+
+.header-banner h1 {
+    color:#fff;
+    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: bolder;
+    margin-bottom: 20px; /* Add space below the heading */
+}
+
+.header-banner p {
+    color: white;
+    line-height: 1.8;
+    font-weight: 100;
+    font-size: var(--text-content);
+}
+
+
+
+/* ========================= */
+
+.main-content{
+    background-image: url('/assets/images/bg-section3.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    min-height: 100vh;
+}
+
+.top-header h1{
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.main-content .card{
+    padding: 20px;
+    min-height: 10vh;
+    background: transparent;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: 0.5s ease-out;
+    overflow: visible;
+    backdrop-filter: blur(10px);
+}
+
+.main-content .card:hover {
+    border-color: #008bf8;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+   }
+
+.card p{
+  text-align: center;
+  align-items: center;
+}
