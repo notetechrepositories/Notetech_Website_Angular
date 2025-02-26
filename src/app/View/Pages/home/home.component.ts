@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SettingsService } from '../../../Services/User/settings.service';
 import { FooterData } from '../../Layout/full/full.component';
+import { environment } from '../../../environment';
 
 export interface AboutUs {
   light_title: string;
@@ -47,6 +48,8 @@ export interface PageContentModel {
 
 export interface PageDetailsContentModel extends PagesModel {
   pagesModels?: PageContentModel[]; // Optional array
+  section_two?: PageContentModel[]; // Optional array
+  main?: PageContentModel[]; // Optional array
 }
 
 @Component({
@@ -82,17 +85,22 @@ export class HomeComponent implements OnInit {
     home_description: '',   // Required field
     pagesModels: []         // Empty array to match the expected structure
   };
-
-
-  homePageTestimonial = {
-    title: `We <span style="color:#006cb6 ">Excel</span> In`,
-    subTitle: "TESTIMONIALS",
+  pageDetailsContentMainModel: PageDetailsContentModel = {
+    id: '',
+    slug: '',
+    title: '',
+    description: '',
+    priority: 0,
+    home_title: '',         // Required field
+    home_description: '',   // Required field
+    pagesModels: []         // Empty array to match the expected structure
   };
 
   safeServiceTitle!: SafeHtml;
   safeTestimonialTitle!: SafeHtml;
   footerData!: FooterData;
   safeMapAddress!: SafeHtml;
+
 
   constructor(private sanitizer: DomSanitizer, private settings: SettingsService) {
 
@@ -103,25 +111,8 @@ export class HomeComponent implements OnInit {
 
   }
 
-  homePageAboutUs = {
-    subTitle: "GET TO KNOW US",
-    title: "Empowering Your Digital Growth with Offshore",
-    subDescription: "IT Solutions",
-    description: "With 26+ years of expertise, Notetech is a leader in offshore software development, delivering high-quality IT solutions to clients in the USA, UK, and Europe. Our dedicated teams help reduce operational costs and enhance efficiency with cutting-edge technology and a commitment to excellence."
-  }
 
-  homePageService = {
-    title: `What We <span style="color:#006cb6 ">Offer</span>`,
-    subTitle: "OUR SERVICES",
-    service: [
-      { icon: "fas fa-pen-fancy", title: "Project Creation", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-      { icon: "fas fa-dharmachakra", title: "Software Development", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry2." },
-      { icon: "fas fa-tasks", title: "Project Management", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-      { icon: "fas fa-tachometer-alt", title: "Project Implementation", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-      { icon: "fas fa-recycle", title: "Software Update", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-      { icon: "fas fa-headset", title: "24/7 Support", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." }
-    ]
-  }
+
 
 
 
@@ -216,10 +207,65 @@ export class HomeComponent implements OnInit {
           }
 
 
+          if (this.pageDetailsContentOneModel.pagesModels) {
+            this.pageDetailsContentOneModel.pagesModels = this.pageDetailsContentOneModel.pagesModels.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : undefined // Use undefined instead of null
+            }));
+          }
 
 
-          console.log(this.pageDetailsContentOneModel);
-          console.log(this.pageDetailsContentTwoModel);
+          if (this.pageDetailsContentTwoModel.pagesModels) {
+            this.pageDetailsContentTwoModel.pagesModels = this.pageDetailsContentTwoModel.pagesModels.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : undefined // Use undefined instead of null
+            }));
+
+          }
+
+          if (this.pageDetailsContentOneModel.section_two) {
+            this.pageDetailsContentOneModel.section_two = this.pageDetailsContentOneModel.section_two.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : undefined // Use undefined instead of null
+            }));
+          }
+
+
+          if (this.pageDetailsContentTwoModel.section_two) {
+            this.pageDetailsContentTwoModel.section_two = this.pageDetailsContentTwoModel.section_two.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : undefined // Use undefined instead of null
+            }));
+
+          }
+          if (this.pageDetailsContentOneModel.main) {
+            this.pageDetailsContentOneModel.main = this.pageDetailsContentOneModel.main.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : undefined // Use undefined instead of null
+            }));
+          }
+
+
+          if (this.pageDetailsContentTwoModel.main) {
+            this.pageDetailsContentTwoModel.main = this.pageDetailsContentTwoModel.main.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : undefined // Use undefined instead of null
+            }));
+
+          }
+
 
           if (aboutUsPage) {
             this.aboutUs = aboutUsPage;
