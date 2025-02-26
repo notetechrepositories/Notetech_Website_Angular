@@ -33,7 +33,6 @@
 
 .header-banner {
     height: 86vh;
-    background: url('/assets/images/service-bg.jpg');
     /* Corrected path */
     background-size: cover;
     background-position: center;

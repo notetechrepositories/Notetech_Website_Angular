@@ -36,6 +36,7 @@ export class ComonPageComponent {
           this.pageContent = res.data.pageContent;
           this.pageTitle = this.sanitizer.bypassSecurityTrustHtml(this.pageContent.page_title ?? '');
           this.title = this.sanitizer.bypassSecurityTrustHtml(this.pageContent.title ?? '');
+          this.pageContent.page_background_image = environment.baseUrlWithOutApiString + this.pageContent.page_background_image
 
 
           if (this.pageContent.pagesModels) {
@@ -48,6 +49,14 @@ export class ComonPageComponent {
           }
           if (this.pageContent.section_two) {
             this.pageContent.section_two = this.pageContent.section_two.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : '' // Use undefined instead of null
+            }));
+          }
+          if (this.pageContent.main) {
+            this.pageContent.main = this.pageContent.main.map(item => ({
               ...item,
               home_image: item.home_image
                 ? `${environment.baseUrlWithOutApiString}${item.home_image}`

@@ -49,6 +49,7 @@ export interface PageContentModel {
 export interface PageDetailsContentModel extends PagesModel {
   pagesModels?: PageContentModel[]; // Optional array
   section_two?: PageContentModel[]; // Optional array
+  main?: PageContentModel[]; // Optional array
 }
 
 @Component({
@@ -84,11 +85,15 @@ export class HomeComponent implements OnInit {
     home_description: '',   // Required field
     pagesModels: []         // Empty array to match the expected structure
   };
-
-
-  homePageTestimonial = {
-    title: `We <span style="color:#006cb6 ">Excel</span> In`,
-    subTitle: "TESTIMONIALS",
+  pageDetailsContentMainModel: PageDetailsContentModel = {
+    id: '',
+    slug: '',
+    title: '',
+    description: '',
+    priority: 0,
+    home_title: '',         // Required field
+    home_description: '',   // Required field
+    pagesModels: []         // Empty array to match the expected structure
   };
 
   safeServiceTitle!: SafeHtml;
@@ -96,11 +101,7 @@ export class HomeComponent implements OnInit {
   footerData!: FooterData;
   safeMapAddress!: SafeHtml;
 
-  pageDetailsContentModels = [
-    { home_content_title: "Front End", home_content_description: "Modern UI frameworks like Angular & React. These tools help build interactive UIs efficiently." },
-    { home_content_title: "Back End", home_content_description: "Server-side technologies such as Node.js & Django. They handle business logic and database operations." },
-    { home_content_title: "Server", home_content_description: "Cloud and on-premise server solutions. Ensure scalability and security for applications." }
-  ];
+
   constructor(private sanitizer: DomSanitizer, private settings: SettingsService) {
 
 
@@ -245,11 +246,26 @@ export class HomeComponent implements OnInit {
             }));
 
           }
+          if (this.pageDetailsContentOneModel.main) {
+            this.pageDetailsContentOneModel.main = this.pageDetailsContentOneModel.main.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : undefined // Use undefined instead of null
+            }));
+          }
 
 
-          console.log(this.pageDetailsContentOneModel);
-          console.log(this.pageDetailsContentOneModel.section_two?.length);
-          console.log(this.pageDetailsContentTwoModel);
+          if (this.pageDetailsContentTwoModel.main) {
+            this.pageDetailsContentTwoModel.main = this.pageDetailsContentTwoModel.main.map(item => ({
+              ...item,
+              home_image: item.home_image
+                ? `${environment.baseUrlWithOutApiString}${item.home_image}`
+                : undefined // Use undefined instead of null
+            }));
+
+          }
+
 
           if (aboutUsPage) {
             this.aboutUs = aboutUsPage;

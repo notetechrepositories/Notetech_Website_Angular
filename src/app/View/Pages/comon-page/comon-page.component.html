@@ -1,4 +1,7 @@
-<section class="header-banner">
+<section
+  class="header-banner"
+  style="background: url({{ pageContent.page_background_image }})"
+>
   <div class="overlay">
     <div class="header-title">
       <h1 [innerHTML]="pageTitle"></h1>
@@ -18,7 +21,7 @@
   <div class="content mt-5">
     <div class="container">
       <div
-        *ngFor="let content of pageContent.pagesModels; let i = index"
+        *ngFor="let content of pageContent.main; let i = index"
         class="row w-100 mb-3 shadow p-3"
       >
         <!-- Conditionally show image only if home_image is not empty -->
