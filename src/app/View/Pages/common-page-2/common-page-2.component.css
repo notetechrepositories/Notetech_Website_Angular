@@ -75,7 +75,11 @@
 /* ========================= */
 
 .main-content{
-    height: 100vh;
+    background-image: url('/assets/images/bg-section3.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    min-height: 100vh;
 }
 
 .top-header h1{
@@ -84,5 +88,22 @@
 }
 
 .main-content .card{
-height: 10vh;
+    padding: 20px;
+    min-height: 10vh;
+    background: transparent;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: 0.5s ease-out;
+    overflow: visible;
+    backdrop-filter: blur(10px);
+}
+
+.main-content .card:hover {
+    border-color: #008bf8;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+   }
+
+.card p{
+  text-align: center;
+  align-items: center;
 }
