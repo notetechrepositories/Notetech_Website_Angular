@@ -21,4 +21,8 @@ export class SettingsService {
 
     return this.http.get<any>(`${this.apiUrl}home/content`);
   }
+  getPage(id: string | null) {
+
+    return this.http.get<any>(`${this.apiUrl}home/page-by-id?page_id=${id}`);
+  }
 }

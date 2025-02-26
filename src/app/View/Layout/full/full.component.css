@@ -474,5 +474,12 @@ header.scrolled {
 }
   
 }
-
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 20px;
+  font-weight: bold;
+}
   
