@@ -27,23 +27,37 @@
             </li>
           </ul>
         </li>
+        <li><a routerLink="/contact">Contact</a></li>
       </ul>
 
-      <!-- <div class="toggle-btn" (click)="toggleMenu()">
+      <div class="toggle-btn" (click)="toggleMenu()">
             <i [ngClass]="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
-        </div> -->
+        </div>
     </div>
 
-    <!-- <div class="toggle-menu" [class.open]="isMenuOpen">
-        <li><a href="">Home</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Service</a></li>
-        <li><a href="">Contact</a></li>
-    </div> -->
+    <div class="toggle-menu" [class.open]="isMenuOpen">
+      <li *ngFor="let item of menuData">
+        <a href="#" (click)="redirectMenu($event, item)">
+          {{ item.menu_name }}
+        </a>
+
+        <!-- Submenu (Dropdown) -->
+        <ul *ngIf="item.children.length > 0" class="dropdown">
+          <li *ngFor="let child of item.children">
+            <a href="#" (click)="redirectMenu($event, child)">
+              {{ child.menu_name }}
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+
+      </li>
+    </div>
   </header>
 
   <main>
-    <div class="small-menu" [ngClass]="{ scrolled: isScrolled }">
+    <!-- <div class="small-menu" [ngClass]="{ scrolled: isScrolled }">
       <input
         class="menu-icon"
         type="checkbox"
@@ -59,7 +73,7 @@
               {{ item.menu_name }}
             </a>
 
-            <!-- Submenu (Dropdown) -->
+           
             <ul *ngIf="item.children.length > 0" class="dropdown">
               <li *ngFor="let child of item.children">
                 <a href="#" (click)="redirectMenu($event, child)">
@@ -70,7 +84,7 @@
           </li>
         </ul>
       </nav>
-    </div>
+    </div> -->
     <section class="main-section">
       <router-outlet />
     </section>
