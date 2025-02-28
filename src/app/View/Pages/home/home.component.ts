@@ -61,6 +61,7 @@ export class HomeComponent implements OnInit {
   glowIntensity: number = 1;
   startCounter = false; // Flag to activate the counter
   aboutUs!: PagesModel;
+  isLoading = true;
   pageDetailsContentModel: PageDetailsContentModel[] = [];
   // PageDetailsContentModel objects initialization
   // Initialize with required fields
@@ -276,6 +277,7 @@ export class HomeComponent implements OnInit {
 
             this.safeMapAddress = this.sanitizer.bypassSecurityTrustHtml(this.footerData.map_address);
           }
+          this.isLoading = false;
 
         } else {
           // this.showError(res.message);

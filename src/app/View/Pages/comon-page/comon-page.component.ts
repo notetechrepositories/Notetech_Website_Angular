@@ -12,6 +12,7 @@ import { environment } from '../../../environment';
 })
 export class ComonPageComponent {
   pageId: string | null = '';
+  isLoading = true;
   pageContent!: PageDetailsContentModel;
   pageTitle!: SafeHtml;
   title!: SafeHtml;
@@ -63,6 +64,7 @@ export class ComonPageComponent {
                 : '' // Use undefined instead of null
             }));
           }
+          this.isLoading = false;
         } else {
 
         }

@@ -111,8 +111,11 @@ export class FullComponent implements OnInit {
   redirectMenu(event: Event, menu: MenuData) {
     event.preventDefault(); // Prevent default behavior of <a> tag
 
-    if (menu.slug === "pages" && menu.page_id) {
-      this.router.navigate(['/pages', menu.page_id]);
+    if (menu.slug === "pages-row" && menu.page_id) {
+      this.router.navigate(['/pages-row', menu.page_id]);
+
+    } else if (menu.slug === "pages-grid" && menu.page_id) {
+      this.router.navigate(['/pages-grid', menu.page_id]);
 
     } else if (menu.slug) {
       this.router.navigate(['/', menu.slug]); // Navigate normally
