@@ -36,17 +36,19 @@ export const PagesRoutes: Routes = [
     },
   },
   {
-    path: 'common-page-2',
+    path: 'pages-grid/:id',
     component: CommonPage2Component,
   },
 
   {
-    path: 'pages/:id',
+    path: 'pages-row/:id',
     component: ComonPageComponent,
     data: {
       title: 'Page',
     },
   },
+
+
 
 
 ];

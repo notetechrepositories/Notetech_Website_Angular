@@ -1,74 +1,46 @@
-<section class="header-banner">
+<div *ngIf="isLoading" class="loading-container">
+  <p>Loading...</p>
+</div>
+
+<!-- Show content only when isLoading is false -->
+<div *ngIf="!isLoading">
+  <section
+    class="header-banner"
+    style="height: 86vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background: url({{ pageContent.page_background_image }})"
+  >
     <div class="overlay">
-        <div class="header-title">
-            <h1>OUR <span class="text-blue-glow">TECHNOLOGIES</span></h1>
-            <p>our team of skilled professionals has extensive knowledge of both existing and emerging technologies.
-                 Currently, we are strategically focusing on specific technologies aligned with our ongoing projects and client needs.
+      <div class="header-title">
+        <h1 [innerHTML]="pageTitle"></h1>
+        <p>{{ pageContent.page_description }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-content">
+    <div class="container">
+      <div class="top-header p-3">
+        <div class="container mt-4">
+          <p class="text-blue mb-0 text-center">{{ pageContent.sub_title }}</p>
+          <h1 class="text-center" [innerHTML]="title"></h1>
+        </div>
+      </div>
+      <div class="row d-flex flex-wrap justify-content-center mt-5">
+        <div
+          class="col-md-4 mb-5"
+          *ngFor="let content of pageContent.main; let i = index"
+        >
+          <div class="card d-flex flex-column h-100">
+            <img [src]="content.home_image" height="150" alt="" />
+            <p>
+              {{ content.home_content_description }}
             </p>
+          </div>
         </div>
+      </div>
     </div>
-</section>
-
-<section class="main-content">
-    <div class="container mb-5">
-        <div class="top-header p-3 mt-4">
-            <div class="container mt-4">
-                <p class="text-blue mb-0 text-center">BUILDING THE FUTURE WITH</p>
-                <h1 class="text-center">Modern <span class="text-blue">Tech </span> Stacks</h1>
-            </div>
-        </div>
-        <div class="row d-flex flex-wrap justify-content-center mt-5 mb-5">
-            <div class="col-md-4 mb-5">
-                <div class="card d-flex flex-column h-100">
-                    <img src="assets/images/icons/angular-logo.png" height="150" alt="" />
-                    <p>
-                        Angular is a TypeScript-based framework developed by Google for building scalable and dynamic web applications. It offers powerful features like two-way data binding, dependency injection, and component-based architecture, making development efficient. With built-in tools for routing, forms, and state management, Angular is ideal for creating modern, high-performance applications. 
-                    </p>
-                </div>
-            </div>
-        
-            <div class="col-md-4 mb-5">
-                <div class="card d-flex flex-column h-100">
-                    <img src="assets/images/icons/dotnet-logo.png" height="150" alt="" />
-                    <p>
-                        .NET is a powerful, open-source framework by Microsoft for building cross-platform applications, including web, desktop, and cloud solutions. It supports multiple languages like C# and F#, offering high performance and scalability. With robust libraries and seamless integration, .NET is ideal for enterprise-level development.                </div>
-            </div>
-        
-            <div class="col-md-4 mb-5">
-                <div class="card d-flex flex-column h-100">
-                    <img src="assets/images/icons/flutter-logo.png" height="150" alt="" />
-                    <p>
-                        Flutter is an open-source UI framework by Google for building natively compiled applications for mobile, web, and desktop from a single codebase. It uses the Dart language and provides a rich set of widgets for creating beautiful, high-performance apps. Flutter’s hot reload feature enables fast development and a smooth UI experience.                    </p>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-4 mb-5">
-                <div class="card d-flex flex-column h-100">
-                    <img src="assets/images/icons/angular-logo.png" height="150" alt="" />
-                    <p>
-                        Angular is a TypeScript-based framework developed by Google for building scalable and dynamic web applications. It offers powerful features like two-way data binding, dependency injection, and component-based architecture, making development efficient. With built-in tools for routing, forms, and state management, Angular is ideal for creating modern, high-performance applications. 
-                    </p>
-                </div>
-            </div>
-        
-            <div class="col-md-4 mb-5">
-                <div class="card d-flex flex-column h-100">
-                    <img src="assets/images/icons/dotnet-logo.png" height="150" alt="" />
-                    <p>
-                        .NET is a powerful, open-source framework by Microsoft for building cross-platform applications, including web, desktop, and cloud solutions. It supports multiple languages like C# and F#, offering high performance and scalability. With robust libraries and seamless integration, .NET is ideal for enterprise-level development.                </div>
-            </div>
-        
-            <div class="col-md-4 mb-5">
-                <div class="card d-flex flex-column h-100">
-                    <img src="assets/images/icons/flutter-logo.png" height="150" alt="" />
-                    <p>
-                        Flutter is an open-source UI framework by Google for building natively compiled applications for mobile, web, and desktop from a single codebase. It uses the Dart language and provides a rich set of widgets for creating beautiful, high-performance apps. Flutter’s hot reload feature enables fast development and a smooth UI experience.                    </p>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-
-</section>
+  </section>
+</div>
