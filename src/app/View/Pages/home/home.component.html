@@ -1,31 +1,37 @@
-<section class="section-1">
-  <!-- Background Video -->
-  <!-- <video class="background-video" autoplay loop muted playsinline>
+<div *ngIf="isLoading" class="loading-container">
+  <p>Loading...</p>
+</div>
+
+<!-- Show content only when isLoading is false -->
+<div *ngIf="!isLoading">
+  <section class="section-1">
+    <!-- Background Video -->
+    <!-- <video class="background-video" autoplay loop muted playsinline>
     <source src="assets/video/bg-video1.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video> -->
 
-  <div class="container p-5">
-    <div class="row d-flex align-items-center justify-content-center vh-100">
-      <div
-        class="col-md-8 d-flex flex-column align-items-start justify-content-center text-start p-2"
-      >
-        <h1>
-          Leading Offshore<br />
-          <span
-            class="text-blue-glow"
-            [ngStyle]="{ 'text-shadow': getGlowStyle() }"
-          >
-            Software Development </span
-          ><br />
-          Company
-        </h1>
-        <p class="mt-2">
-          26+ years of excellence in delivering cutting-edge software solutions
-          to clients worldwide.
-        </p>
-      </div>
-      <!-- <div class="col-md-4 d-flex justify-content-end">
+    <div class="container p-5">
+      <div class="row d-flex align-items-center justify-content-center vh-100">
+        <div
+          class="col-md-8 d-flex flex-column align-items-start justify-content-center text-start p-2"
+        >
+          <h1>
+            Leading Offshore<br />
+            <span
+              class="text-blue-glow"
+              [ngStyle]="{ 'text-shadow': getGlowStyle() }"
+            >
+              Software Development </span
+            ><br />
+            Company
+          </h1>
+          <p class="mt-2">
+            26+ years of excellence in delivering cutting-edge software
+            solutions to clients worldwide.
+          </p>
+        </div>
+        <!-- <div class="col-md-4 d-flex justify-content-end">
         <ul class="example-2">
           <li class="icon-content">
             <a
@@ -118,73 +124,73 @@
         </ul>
         
       </div>  -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section-2">
-  <div class="about-section">
-    <div class="container">
-      <div class="row w-100">
-        <div class="col-md-6">
-          <p class="text-blue">{{ aboutUs.light_title }}</p>
-          <h1>
-            {{ aboutUs.home_title }}<br />
-            <span class="text-blue">{{ aboutUs.home_sub_title }}</span>
-          </h1>
-          <div class="content">
-            <p>{{ aboutUs.home_description }}</p>
+  <section class="section-2">
+    <div class="about-section">
+      <div class="container">
+        <div class="row w-100">
+          <div class="col-md-6">
+            <p class="text-blue">{{ aboutUs.light_title }}</p>
+            <h1>
+              {{ aboutUs.home_title }}<br />
+              <span class="text-blue">{{ aboutUs.home_sub_title }}</span>
+            </h1>
+            <div class="content">
+              <p>{{ aboutUs.home_description }}</p>
+            </div>
+            <button href="#" class="read-more-btn">
+              <span class="read-more-btn__icon-wrapper">
+                <svg
+                  viewBox="0 0 14 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="read-more-btn__icon-svg"
+                  width="10"
+                >
+                  <path
+                    d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+
+                <svg
+                  viewBox="0 0 14 15"
+                  fill="none"
+                  width="10"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="read-more-btn__icon-svg read-more-btn__icon-svg--copy"
+                >
+                  <path
+                    d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </span>
+              <span class="btn-txt">Read More</span>
+            </button>
           </div>
-          <button href="#" class="read-more-btn">
-            <span class="read-more-btn__icon-wrapper">
-              <svg
-                viewBox="0 0 14 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="read-more-btn__icon-svg"
-                width="10"
-              >
-                <path
-                  d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                  fill="currentColor"
-                ></path>
-              </svg>
-
-              <svg
-                viewBox="0 0 14 15"
-                fill="none"
-                width="10"
-                xmlns="http://www.w3.org/2000/svg"
-                class="read-more-btn__icon-svg read-more-btn__icon-svg--copy"
-              >
-                <path
-                  d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                  fill="currentColor"
-                ></path>
-              </svg>
-            </span>
-            <span class="btn-txt">Read More</span>
-          </button>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="service-section">
-    <section class="our-service-area text-center">
-      <div class="container">
-        <div class="row w-100">
-          <div class="col-md-12">
-            <div class="service-heading text-center">
-              <!-- <h2>What We <span>Offer</span></h2> -->
-              <h2 [innerHTML]="safeServiceTitle"></h2>
-              <p class="text-blue">
-                {{ pageDetailsContentOneModel.light_title }}
-              </p>
+    <div class="service-section">
+      <section class="our-service-area text-center">
+        <div class="container">
+          <div class="row w-100">
+            <div class="col-md-12">
+              <div class="service-heading text-center">
+                <!-- <h2>What We <span>Offer</span></h2> -->
+                <h2 [innerHTML]="safeServiceTitle"></h2>
+                <p class="text-blue">
+                  {{ pageDetailsContentOneModel.light_title }}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- <div
+          <!-- <div
           class="slider"
           *ngIf="pageDetailsContentOneModel.pagesModels?.length != 0"
         >
@@ -213,277 +219,308 @@
             </div>
           </div>
         </div> -->
-        <div
-          class="row our-offer-items less-carousel w-100 d-flex justify-content-center"
-          *ngIf="pageDetailsContentOneModel.section_two?.length != 0"
-        >
           <div
-            class="col-md-4 col-sm-6 equal-height"
-            *ngFor="
-              let page of pageDetailsContentOneModel.section_two | slice : 0 : 6
-            "
+            class="row our-offer-items less-carousel w-100 d-flex justify-content-center"
+            *ngIf="pageDetailsContentOneModel.section_two?.length != 0"
           >
-            <div class="item">
-              <i class="fas fa-pen-fancy"></i>
-              <h4>{{ page.home_content_title }}</h4>
-              <p>{{ page.home_content_description }}</p>
+            <div
+              class="col-md-4 col-sm-6 equal-height"
+              *ngFor="
+                let page of pageDetailsContentOneModel.section_two
+                  | slice : 0 : 6
+              "
+            >
+              <div class="item">
+                <i class="fas fa-pen-fancy"></i>
+                <h4>{{ page.home_content_title }}</h4>
+                <p>{{ page.home_content_description }}</p>
+              </div>
             </div>
           </div>
+          <div
+            class="d-flex justify-content-center"
+            style="margin-bottom: 52px"
+          >
+            <button class="view-all-btn">
+              View All
+              <div class="arrow-wrapper">
+                <div class="arrow"></div>
+              </div>
+            </button>
+          </div>
         </div>
-        <div class="d-flex justify-content-center" style="margin-bottom: 52px">
-          <button class="view-all-btn">
-            View All
-            <div class="arrow-wrapper">
-              <div class="arrow"></div>
-            </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section-3 mt-2">
+    <div class="container">
+      <div class="row w-100">
+        <div class="col-md-6">
+          <h1>
+            <span class="text-gray" style="font-size: 2rem"
+              >Elevate your business with</span
+            ><br />
+            <span class="text-blue">Notetech Software.</span>
+          </h1>
+          <p>
+            Experience innovative solutions crafted to address your unique
+            business challenges.
+          </p>
+          <button href="#" class="read-more-btn">
+            <span class="read-more-btn__icon-wrapper">
+              <svg
+                viewBox="0 0 14 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="read-more-btn__icon-svg"
+                width="10"
+              >
+                <path
+                  d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+
+              <svg
+                viewBox="0 0 14 15"
+                fill="none"
+                width="10"
+                xmlns="http://www.w3.org/2000/svg"
+                class="read-more-btn__icon-svg read-more-btn__icon-svg--copy"
+              >
+                <path
+                  d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </span>
+            <span class="btn-txt">Let's Start</span>
           </button>
         </div>
+        <div class="col-md-6"></div>
       </div>
-    </section>
-  </div>
-</section>
-
-<section class="section-3 mt-2">
-  <div class="container">
-    <div class="row w-100">
-      <div class="col-md-6">
-        <h1>
-          <span class="text-gray" style="font-size: 2rem"
-            >Elevate your business with</span
-          ><br />
-          <span class="text-blue">Notetech Software.</span>
-        </h1>
-        <p>
-          Experience innovative solutions crafted to address your unique
-          business challenges.
-        </p>
-        <button href="#" class="read-more-btn">
-          <span class="read-more-btn__icon-wrapper">
-            <svg
-              viewBox="0 0 14 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="read-more-btn__icon-svg"
-              width="10"
-            >
-              <path
-                d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                fill="currentColor"
-              ></path>
-            </svg>
-
-            <svg
-              viewBox="0 0 14 15"
-              fill="none"
-              width="10"
-              xmlns="http://www.w3.org/2000/svg"
-              class="read-more-btn__icon-svg read-more-btn__icon-svg--copy"
-            >
-              <path
-                d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                fill="currentColor"
-              ></path>
-            </svg>
-          </span>
-          <span class="btn-txt">Let's Start</span>
-        </button>
-      </div>
-      <div class="col-md-6"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section-4 mt-2">
-  <div class="container">
-    <div class="technology-card">
-      <p class="text-blue text-center mb-0">
-        {{ pageDetailsContentTwoModel.light_title }}
-      </p>
-      <h1 class="text-center" [innerHTML]="safeTestimonialTitle"></h1>
-      <div
-        class="slider mt-5"
-        *ngIf="pageDetailsContentTwoModel.pagesModels?.length != 0"
-      >
-        <div class="slide-track">
-          <div
-            class="slide"
-            *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels"
-          >
-            <img
-              src="{{ pageDetail.home_image }}"
-              height="150"
-              width="350"
-              alt="{{ pageDetail.home_image }}"
-            />
-          </div>
-          <div
-            class="slide"
-            *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels"
-          >
-            <img
-              src="{{ pageDetail.home_image }}"
-              height="150"
-              width="350"
-              alt="{{ pageDetail.home_image }}"
-            />
+  <section class="section-4 mt-2">
+    <div class="container">
+      <div class="technology-card">
+        <p class="text-blue text-center mb-0">
+          {{ pageDetailsContentTwoModel.light_title }}
+        </p>
+        <h1 class="text-center" [innerHTML]="safeTestimonialTitle"></h1>
+        <div
+          class="slider mt-5"
+          *ngIf="pageDetailsContentTwoModel.pagesModels?.length != 0"
+        >
+          <div class="slide-track">
+            <div
+              class="slide"
+              *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels"
+            >
+              <img
+                src="{{ pageDetail.home_image }}"
+                height="150"
+                width="350"
+                alt="{{ pageDetail.home_image }}"
+              />
+            </div>
+            <div
+              class="slide"
+              *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels"
+            >
+              <img
+                src="{{ pageDetail.home_image }}"
+                height="150"
+                width="350"
+                alt="{{ pageDetail.home_image }}"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="tech-content"
-        *ngIf="pageDetailsContentTwoModel.section_two?.length != 0"
-      >
-        <div class="row w-100 d-flex justify-content-center">
-          <div
-            class="col-md-4 col-sm-12"
-            *ngFor="
-              let item of pageDetailsContentTwoModel.section_two | slice : 0 : 3
-            "
-          >
-            <div class="card tech-card text-center mb-3">
-              <div class="card-body">
-                <h3 class="card-title">{{ item.home_content_title }}</h3>
-                <p class="card-text">{{ item.home_content_description }}</p>
+        <div
+          class="tech-content"
+          *ngIf="pageDetailsContentTwoModel.section_two?.length != 0"
+        >
+          <div class="row w-100 d-flex justify-content-center">
+            <div
+              class="col-md-4 col-sm-12"
+              *ngFor="
+                let item of pageDetailsContentTwoModel.section_two
+                  | slice : 0 : 3
+              "
+            >
+              <div class="card tech-card text-center mb-3">
+                <div class="card-body">
+                  <h3 class="card-title">{{ item.home_content_title }}</h3>
+                  <p class="card-text">{{ item.home_content_description }}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="testimonial-section mt-2">
-  <div class="container">
-    <div class="row">
-      <p class="text-blue mb-0">TESTIMONIALS</p>
-      <h1>
-        What Our <span class="text-blue">Clients </span>Say<span
-          class="text-blue"
-        >
-          ?</span
-        >
-      </h1>
-      <div class="testimonials-section">
-        <input
-          type="radio"
-          name="slider"
-          title="slide1"
-          checked="checked"
-          class="slider__nav"
-        />
-        <input type="radio" name="slider" title="slide2" class="slider__nav" />
-        <input type="radio" name="slider" title="slide3" class="slider__nav" />
-        <input type="radio" name="slider" title="slide4" class="slider__nav" />
-        <input type="radio" name="slider" title="slide5" class="slider__nav" />
-        <div class="slider__inner">
-          <div class="slider__contents">
-            <blockquote>&rdquo;</blockquote>
-            <p class="slider__txt">
-              During our association for the last years with Notetech Software,
-              I have impressed by the top quality of their development team and
-              their integrity in the business dealing. The highly motivated,
-              innovative and quick thinking professionals at Notetech make a
-              dream team so vital for the success of software project. Business
-              dealings with Notetech is smooth and easy.
-            </p>
-            <h2 class="slider__caption">
-              Mr.John Carini | Executive Chairman, iEnterprises Inc.
-            </h2>
-          </div>
-          <div class="slider__contents">
-            <blockquote>&rdquo;</blockquote>
-            <p class="slider__txt">
-              You all bend over backwards to get it done. Inside sales and the
-              Account Managers are great! It's your service...you all know that
-              it's not just about taking orders it's about service. Why do we
-              choose you guys - your people, your prices, you're quick and you
-              have a ton of technical knowledge.
-            </p>
-            <h2 class="slider__caption">Jared | Rexam</h2>
-          </div>
-          <div class="slider__contents">
-            <blockquote>&rdquo;</blockquote>
-            <p class="slider__txt">
-              It's the long-term relationship we have with Proheat that keeps me
-              calling you guys. I trust you, you're quick, and everybody I've
-              ever spoken to there are all great people. Our CEO, Bill, talks
-              about building relationships. That's exactly what Proheat does,
-              and I couldn't be happier.
-            </p>
-            <h2 class="slider__caption">Chris | C&M Fine Pack</h2>
-          </div>
-          <div class="slider__contents">
-            <blockquote>&rdquo;</blockquote>
-            <p class="slider__txt">
-              You answer my questions, always takes care of problems, and I
-              never have a hassle.
-            </p>
-            <h2 class="slider__caption">Rex | LNP Engineering Plastics</h2>
-          </div>
-          <div class="slider__contents">
-            <blockquote>&rdquo;</blockquote>
-            <p class="slider__txt">
-              Proheat's staff are all so friendly and everybody goes above and
-              beyond. Everyone is courteous, everything is quick and you get us
-              what we need. I have to shop around for everything and we ALWAYS
-              come back to Proheat.
-            </p>
-            <h2 class="slider__caption">Darlene | Russel Stover</h2>
+  <section class="testimonial-section mt-2">
+    <div class="container">
+      <div class="row">
+        <p class="text-blue mb-0">TESTIMONIALS</p>
+        <h1>
+          What Our <span class="text-blue">Clients </span>Say<span
+            class="text-blue"
+          >
+            ?</span
+          >
+        </h1>
+        <div class="testimonials-section">
+          <input
+            type="radio"
+            name="slider"
+            title="slide1"
+            checked="checked"
+            class="slider__nav"
+          />
+          <input
+            type="radio"
+            name="slider"
+            title="slide2"
+            class="slider__nav"
+          />
+          <input
+            type="radio"
+            name="slider"
+            title="slide3"
+            class="slider__nav"
+          />
+          <input
+            type="radio"
+            name="slider"
+            title="slide4"
+            class="slider__nav"
+          />
+          <input
+            type="radio"
+            name="slider"
+            title="slide5"
+            class="slider__nav"
+          />
+          <div class="slider__inner">
+            <div class="slider__contents">
+              <blockquote>&rdquo;</blockquote>
+              <p class="slider__txt">
+                During our association for the last years with Notetech
+                Software, I have impressed by the top quality of their
+                development team and their integrity in the business dealing.
+                The highly motivated, innovative and quick thinking
+                professionals at Notetech make a dream team so vital for the
+                success of software project. Business dealings with Notetech is
+                smooth and easy.
+              </p>
+              <h2 class="slider__caption">
+                Mr.John Carini | Executive Chairman, iEnterprises Inc.
+              </h2>
+            </div>
+            <div class="slider__contents">
+              <blockquote>&rdquo;</blockquote>
+              <p class="slider__txt">
+                You all bend over backwards to get it done. Inside sales and the
+                Account Managers are great! It's your service...you all know
+                that it's not just about taking orders it's about service. Why
+                do we choose you guys - your people, your prices, you're quick
+                and you have a ton of technical knowledge.
+              </p>
+              <h2 class="slider__caption">Jared | Rexam</h2>
+            </div>
+            <div class="slider__contents">
+              <blockquote>&rdquo;</blockquote>
+              <p class="slider__txt">
+                It's the long-term relationship we have with Proheat that keeps
+                me calling you guys. I trust you, you're quick, and everybody
+                I've ever spoken to there are all great people. Our CEO, Bill,
+                talks about building relationships. That's exactly what Proheat
+                does, and I couldn't be happier.
+              </p>
+              <h2 class="slider__caption">Chris | C&M Fine Pack</h2>
+            </div>
+            <div class="slider__contents">
+              <blockquote>&rdquo;</blockquote>
+              <p class="slider__txt">
+                You answer my questions, always takes care of problems, and I
+                never have a hassle.
+              </p>
+              <h2 class="slider__caption">Rex | LNP Engineering Plastics</h2>
+            </div>
+            <div class="slider__contents">
+              <blockquote>&rdquo;</blockquote>
+              <p class="slider__txt">
+                Proheat's staff are all so friendly and everybody goes above and
+                beyond. Everyone is courteous, everything is quick and you get
+                us what we need. I have to shop around for everything and we
+                ALWAYS come back to Proheat.
+              </p>
+              <h2 class="slider__caption">Darlene | Russel Stover</h2>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section clss="office-section">
-  <div class="container mb-4">
-    <h1 class="text-center fw-bold" style="font-size: 3.5rem">
-      Our <span class="text-blue">Office </span>
-    </h1>
-    <br /><br />
-    <div class="mobile_view_restrict">
-      <div class="map_container">
-        <!-- <img src="https://i.ibb.co/QpYG5f2/offices-world-map-e2cc096.png" alt="World Map"> -->
-        <img src="assets/images/worldmap.png" alt="" />
-
-        <div
-          class="map_marker dot_india"
-          (mouseenter)="showLocationInfo('india')"
-          (mouseleave)="hideLocationInfo('india')"
-          (click)="toggleLocationInfo('india')"
-        >
-          <div
-            *ngIf="!footerData.map_address"
-            class="marker_info"
-            [ngClass]="{ visible: activeLocation === 'india' }"
-            (click)="
-              redirectToMap(footerData.google_map ? footerData.google_map : '#')
-            "
-          >
-            <!-- <img src="https://i.ibb.co/X2WNSXX/istanbul-icon.png" alt="India Icon"> -->
-            <p><strong>India</strong><br /></p>
-          </div>
+  <section clss="office-section">
+    <div class="container mb-4">
+      <h1 class="text-center fw-bold" style="font-size: 3.5rem">
+        Our <span class="text-blue">Office </span>
+      </h1>
+      <br /><br />
+      <div class="mobile_view_restrict">
+        <div class="map_container">
+          <!-- <img src="https://i.ibb.co/QpYG5f2/offices-world-map-e2cc096.png" alt="World Map"> -->
+          <img src="assets/images/worldmap.png" alt="" />
 
           <div
-            *ngIf="footerData.map_address"
-            class="marker_info"
-            [ngClass]="{ visible: activeLocation === 'india' }"
-            (click)="
-              redirectToMap(footerData.google_map ? footerData.google_map : '#')
-            "
+            class="map_marker dot_india"
+            (mouseenter)="showLocationInfo('india')"
+            (mouseleave)="hideLocationInfo('india')"
+            (click)="toggleLocationInfo('india')"
           >
-            <!-- <img src="https://i.ibb.co/X2WNSXX/istanbul-icon.png" alt="India Icon"> -->
-            <!-- <p>
+            <div
+              *ngIf="!footerData.map_address"
+              class="marker_info"
+              [ngClass]="{ visible: activeLocation === 'india' }"
+              (click)="
+                redirectToMap(
+                  footerData.google_map ? footerData.google_map : '#'
+                )
+              "
+            >
+              <!-- <img src="https://i.ibb.co/X2WNSXX/istanbul-icon.png" alt="India Icon"> -->
+              <p><strong>India</strong><br /></p>
+            </div>
+
+            <div
+              *ngIf="footerData.map_address"
+              class="marker_info"
+              [ngClass]="{ visible: activeLocation === 'india' }"
+              (click)="
+                redirectToMap(
+                  footerData.google_map ? footerData.google_map : '#'
+                )
+              "
+            >
+              <!-- <img src="https://i.ibb.co/X2WNSXX/istanbul-icon.png" alt="India Icon"> -->
+              <!-- <p>
               <strong>India</strong><br />
               <strong>Notetech Software</strong><br />
               Pcra 77, Pc Road, Azad Rd, Kaloor, Ernakulam, Kerala 682017
             </p> -->
-            <p [innerHTML]="safeMapAddress"></p>
+              <p [innerHTML]="safeMapAddress"></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
