@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SettingsService {
+export class MasterService {
 
   private apiUrl = environment.baseUrl;
 
@@ -24,5 +24,14 @@ export class SettingsService {
   getPage(id: string | null) {
 
     return this.http.get<any>(`${this.apiUrl}home/page-by-id?page_id=${id}`);
+  }
+  getContactUs() {
+
+    return this.http.get<any>(`${this.apiUrl}contact-us`);
+  }
+  insertContactUs(input: any) {
+    console.log(input);
+
+    return this.http.post<any>(`${this.apiUrl}contact-us`, input);
   }
 }

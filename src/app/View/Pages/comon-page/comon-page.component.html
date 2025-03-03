@@ -6,11 +6,11 @@
 <div *ngIf="!isLoading">
   <section
     class="header-banner"
-    style="height: 86vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background: url({{ pageContent.page_background_image }})"
+    [style.height]="'86vh'"
+    [style.backgroundSize]="'cover'"
+    [style.backgroundPosition]="'center'"
+    [style.backgroundRepeat]="'no-repeat'"
+    [style.backgroundImage]="'url(' + pageContent.page_background_image + ')'"
   >
     <div class="overlay">
       <div class="header-title">
