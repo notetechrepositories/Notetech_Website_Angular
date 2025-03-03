@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { SettingsService } from '../../../Services/User/settings.service';
-import { FooterData } from '../../Layout/full/full.component';
+import { MasterService } from '../../../Services/User/master.service';
+import { SettingsData } from '../../Layout/full/full.component';
 import { environment } from '../../../environment';
 
 export interface AboutUs {
@@ -99,11 +99,11 @@ export class HomeComponent implements OnInit {
 
   safeServiceTitle!: SafeHtml;
   safeTestimonialTitle!: SafeHtml;
-  footerData!: FooterData;
+  footerData!: SettingsData;
   safeMapAddress!: SafeHtml;
 
 
-  constructor(private sanitizer: DomSanitizer, private settings: SettingsService) {
+  constructor(private sanitizer: DomSanitizer, private settings: MasterService) {
 
 
   }
@@ -196,7 +196,7 @@ export class HomeComponent implements OnInit {
             (page: PageDetailsContentModel) => page.slug === 'about-us'
           );
           const sortedPages = this.pageDetailsContentModel
-            .filter((page: PageDetailsContentModel) => page.slug !== 'about-us')
+            .filter((page: PageDetailsContentModel) => page.slug !== 'about-us' && page.slug !== 'contact-us')
             .sort((a, b) => (a.priority || 0) - (b.priority || 0)); // Sorting by priority, ensure default value if undefined
 
 

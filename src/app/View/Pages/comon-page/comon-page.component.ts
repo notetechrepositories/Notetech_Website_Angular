@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SettingsService } from '../../../Services/User/settings.service';
+import { MasterService } from '../../../Services/User/master.service';
 import { PageDetailsContentModel } from '../home/home.component';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { environment } from '../../../environment';
@@ -16,8 +16,9 @@ export class ComonPageComponent {
   pageContent!: PageDetailsContentModel;
   pageTitle!: SafeHtml;
   title!: SafeHtml;
+
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer,
-    private settingService: SettingsService) { }
+    private settingService: MasterService) { }
 
   async ngOnInit(): Promise<void> {
     this.route.paramMap.subscribe(params => {

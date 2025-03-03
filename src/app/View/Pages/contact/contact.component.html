@@ -1,92 +1,143 @@
-<section class="header-banner" style="background-image: url('/assets/images/contact-bg.jpg');">
+<div *ngIf="isLoading" class="loading-container">
+  <p>Loading...</p>
+</div>
+
+<!-- Show content only when isLoading is false -->
+<div *ngIf="!isLoading">
+  <section
+    class="header-banner"
+    style="background-image: url('/assets/images/contact-bg.jpg')"
+  >
     <div class="overlay">
-        <div class="header-title">
-            <h1> <span class="text-blue-glow">Get in Touch</span></h1>
-            <h2> Let’s Create Something Amazing!</h2>
-            <p>"Have a project in mind? Need expert advice? We’re here to help—let’s connect and create something extraordinary."</p>
-        </div>
-
-
+      <div class="header-title">
+        <h1 [innerHTML]="pageTitle"></h1>
+        <h2 *ngIf="pageContent.page_sub_title">
+          {{ pageContent.page_sub_title }}
+        </h2>
+        <p *ngIf="pageContent.page_description">
+          {{ pageContent.page_description }}
+        </p>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="section-bg" style="background-image: url('/assets/images/world-map2.png');"  data-scroll-index="7">
-    <div class="overlay-contact pt-100 pb-100 ">
+  <section
+    class="section-bg"
+    style="background-image: url('/assets/images/world-map2.png')"
+    data-scroll-index="7"
+  >
+    <div class="overlay-contact pt-100 pb-100">
       <div class="container">
-         <div class="row">
-              <div class="col-lg-6 d-flex align-items-center">
-                  <div class="contact-info">
-
-                      <h2 class="contact-title">Have Any <span style="color: #0a75bd;">Questions?</span></h2>
-                      <p>Lorem ipsum is a dummy text used to replace text in some areas just for the purpose of an example. It can be used in publishing and graphic design. The lorem ipsum text is usually a section of a Latin text by Cicero with words altered, added and removed to make it nonsensical.</p>
-                      <ul class="contact-info">
-                          <li>
-                            <div class="info-left">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <div class="info-right">
-                                <h4>+11223344550</h4>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="info-left">
-                                <i class="fas fa-at"></i>
-                            </div>
-                            <div class="info-right">
-                                <h4>infoexample.com</h4>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="info-left">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="info-right">
-                                <h4>PCRA 77,9th Avenue,
-                                    Azad Road, PC Road,<br>
-                                    Kaloor, Kochi, India<br>
-                                    Pincode : 682017
-                                </h4>
-                            </div>
-                          </li>
-                      </ul>
+        <div class="row">
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="contact-info">
+              <h2 class="contact-title" [innerHTML]="title"></h2>
+              <p *ngIf="pageContent.description">
+                {{ pageContent.description }}
+              </p>
+              <ul class="contact-info">
+                <li *ngIf="settings.phone_number">
+                  <div class="info-left">
+                    <i class="fas fa-mobile-alt"></i>
                   </div>
-              </div>
-              <div class="col-lg-6 d-flex align-items-center">
-                      <div class="contact-form">
-                                  <!--Contact Form-->
-                                  <form>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input type="email" class="form-control" placeholder="Email">
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <input type="text" class="form-control" placeholder="Subject">
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <textarea class="form-control" rows="5" id="comment" placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-block" type="submit">Send Now!</button>
-                                        </div>
-                                    </div>                                    
-                                </form>
-                              </div>
-              </div>
-         </div>
-     </div>
-        </div>
-  </section>
+                  <div class="info-right">
+                    <h4>{{ settings.phone_number }}</h4>
+                  </div>
+                </li>
+                <li *ngIf="settings.email">
+                  <div class="info-left">
+                    <i class="fas fa-at"></i>
+                  </div>
+                  <div class="info-right">
+                    <h4>{{ settings.email }}</h4>
+                  </div>
+                </li>
+                <li *ngIf="address">
+                  <div class="info-left">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-right">
+                    <h4 [innerHTML]="address"></h4>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="contact-form">
+              <!--Contact Form-->
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Name"
+                      formControlName="name"
+                    />
+                  </div>
+                  <div class="col-sm-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Subject"
+                      formControlName="subject"
+                    />
+                  </div>
+                  <div class="col-sm-6">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      formControlName="email"
+                    />
+                  </div>
 
-  <section class="map-section">
-    <div class="container mb-5">
-        <h1>Find Us on the <span style="color: #0a75bd;">Map!</span> </h1>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.287105515231!2d76.2949959758634!3d9.9931261731512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d3ef8ab27b9%3A0x101eb00ac14094ea!2sNotetech%20Software!5e0!3m2!1sen!2sin!4v1740677726845!5m2!1sen!2sin"
-         height="500"
-         style="border:0;" 
-         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+                  <div class="col-sm-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone Number"
+                      formControlName="phone_number"
+                    />
+                  </div>
+                  <div class="col-sm-12">
+                    <textarea
+                      class="form-control"
+                      rows="5"
+                      placeholder="Message"
+                      formControlName="message"
+                    ></textarea>
+                  </div>
+                  <div class="col-sm-12">
+                    <button
+                      class="btn btn-block"
+                      type="submit"
+                      [disabled]="contactForm.invalid"
+                    >
+                      Send Now!
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+  <section class="map-section" *ngIf="googleMapUrl">
+    <div class="container mb-5">
+      <h1>Find Us on the <span style="color: #0a75bd">Map!</span></h1>
+      <iframe
+        [attr.src]="googleMapUrl"
+        height="500"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+    </div>
+  </section>
+</div>

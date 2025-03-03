@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
-import { SettingsService } from '../../../Services/User/settings.service';
+import { MasterService } from '../../../Services/User/master.service';
 import { environment } from '../../../environment';
 import { Router } from '@angular/router';
 export interface MenuData {
@@ -14,7 +14,7 @@ export interface MenuData {
   children: MenuData[];
 }
 
-export interface FooterData {
+export interface SettingsData {
   id: string;
   header_logo: string;
   office_name: string;
@@ -33,6 +33,10 @@ export interface FooterData {
   skype: string;
   copy_rights: string;
   google_map: string;
+  google_map_embedded: string;
+  phone_number: string;
+  address: string;
+  email: string;
 }
 @Component({
   selector: 'app-full',
@@ -42,11 +46,11 @@ export interface FooterData {
 export class FullComponent implements OnInit {
   isMenuOpen = false;
   isScrolled = false;
-  footerData!: FooterData;
+  footerData!: SettingsData;
   menuData: MenuData[] = [];
   isLoading = true; // New loading flag
 
-  constructor(private renderer: Renderer2, private sttings: SettingsService, private router: Router
+  constructor(private renderer: Renderer2, private sttings: MasterService, private router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {

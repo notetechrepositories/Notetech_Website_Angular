@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environment';
-import { SettingsService } from '../../../Services/User/settings.service';
+import { MasterService } from '../../../Services/User/master.service';
 import { PageDetailsContentModel } from '../home/home.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class CommonPage2Component {
   title!: SafeHtml;
   isLoading = true;
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer,
-    private settingService: SettingsService) { }
+    private settingService: MasterService) { }
 
   async ngOnInit(): Promise<void> {
     this.route.paramMap.subscribe(params => {
