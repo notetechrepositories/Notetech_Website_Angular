@@ -9,8 +9,14 @@ export const navItemsAllUser: NavItem[] = [
     subtext: 'dashboard',
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
-    route: '/dashboard',
+    route: '/admin/dashboard', // ✅ Ensure correct admin route
+  },
+  {
+    subtext: 'contact-us',
+    displayName: 'Contact Us',
+    iconName: 'layout-dashboard',
+    route: '/admin/contact-us', // ✅ Fix route to match routing configuration
   }
-
 ];
+
 

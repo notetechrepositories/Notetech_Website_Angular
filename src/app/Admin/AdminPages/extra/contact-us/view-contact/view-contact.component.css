@@ -1,0 +1,46 @@
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+input[readonly],
+textarea[readonly] {
+    background-color: #f1f1f1;
+}
+
+input[disabled],
+textarea[disabled] {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button.add_button {
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.add_button:hover {
+    background-color: #45a049;
+}
+

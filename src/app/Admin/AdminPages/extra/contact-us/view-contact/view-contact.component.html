@@ -1,0 +1,120 @@
+<div
+  style="display: flex; justify-content: space-between; padding-right: 30px"
+  class="m-t-6"
+>
+  <h1 mat-dialog-title class="m-b-32">Contact Details</h1>
+</div>
+
+<div mat-dialog-content>
+  <form>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 10px;
+      "
+    >
+      <!-- Name Field (Disabled) -->
+      <div style="width: 100%">
+        <label for="name" class="blue-label">Name</label>
+        <input
+          id="name"
+          type="text"
+          [(ngModel)]="data.name"
+          name="name"
+          readonly
+          class="blue-input"
+        />
+      </div>
+
+      <!-- Phone Field (Disabled) -->
+      <div style="width: 100%">
+        <label for="phone" class="blue-label">Phone</label>
+        <input
+          id="phone"
+          type="text"
+          [(ngModel)]="data.phone"
+          name="phone"
+          readonly
+          class="blue-input"
+        />
+      </div>
+
+      <!-- Email Field (Disabled) -->
+      <div style="width: 100%">
+        <label for="email" class="blue-label">Email</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="data.email"
+          name="email"
+          [disabled]="true"
+          class="blue-input"
+        />
+      </div>
+
+      <!-- Subject Field (Disabled) -->
+      <div style="width: 100%">
+        <label for="subject" class="blue-label">Subject</label>
+        <input
+          id="subject"
+          type="text"
+          [(ngModel)]="data.subject"
+          name="subject"
+          [disabled]="true"
+          class="blue-input"
+        />
+      </div>
+
+      <!-- Message Field (Disabled) -->
+      <div style="width: 100%">
+        <label for="message" class="blue-label">Message</label>
+        <textarea
+          id="message"
+          [(ngModel)]="data.message"
+          name="message"
+          [disabled]="true"
+          class="blue-textarea"
+        ></textarea>
+      </div>
+
+      <!-- Replay Subject Field (Disabled) -->
+      <div style="width: 100%">
+        <label for="replay_subject" class="blue-label">Replay Subject</label>
+        <input
+          id="replay_subject"
+          type="text"
+          [(ngModel)]="data.replay_subject"
+          name="replay_subject"
+          [disabled]="true"
+          class="blue-input"
+        />
+      </div>
+
+      <!-- Insert Date Field (Disabled) -->
+      <div style="width: 100%">
+        <label for="insert_date" class="blue-label">Insert Date</label>
+        <input
+          id="insert_date"
+          type="text"
+          [(ngModel)]="formattedDate"
+          name="insert_date"
+          [disabled]="true"
+          class="blue-input"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Close Button -->
+<div mat-dialog-actions class="p-24">
+  <button
+    class="add_button blue-button"
+    mat-raised-button
+    (click)="closeDialog()"
+  >
+    Close
+  </button>
+</div>
