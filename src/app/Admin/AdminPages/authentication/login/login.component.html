@@ -9,7 +9,7 @@
     style="position: absolute; top: 16px; left: 16px; display: inline-block"
   >
     <img
-      src="./assets/images/logos/notetech_logo.png"
+      src="assets\images\notetech-logo.png"
       alt="logo"
       style="height: 50px"
     />
@@ -29,7 +29,7 @@
               >Username</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput formControlName="user_name" />
+              <input matInput formControlName="username" />
             </mat-form-field>
 
             <!-- Password -->
@@ -43,9 +43,9 @@
             <div class="d-flex align-items-center m-b-12">
               <a
                 [routerLink]="['/authentication/forgot-password']"
-                class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14"
-                >Forgot Password?</a
-              >
+                class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14">
+                Forgot Password?
+              </a>
             </div>
             <a
               mat-flat-button

@@ -4,6 +4,7 @@ import { MasterService } from '../../../Services/User/master.service';
 import { SettingsData } from '../../Layout/full/full.component';
 import { environment } from '../../../environment';
 
+
 export interface AboutUs {
   light_title: string;
   home_title: string;
@@ -117,7 +118,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  @ViewChild('counterElement', { static: false }) counterElement!: ElementRef;
+  // @ViewChild('counterElement', { static: false }) counterElement!: ElementRef;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -142,18 +143,19 @@ export class HomeComponent implements OnInit {
 
 
 
-  ngAfterViewInit() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          this.startCounter = true; // Start the counter when visible
-          observer.unobserve(entry.target); // Stop observing after triggering
-        }
-      });
-    }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
+  // ngAfterViewInit() {
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         this.startCounter = true; // Start the counter when visible
+  //         observer.unobserve(entry.target); // Stop observing after triggering
+  //       }
+  //     });
+  //   }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
 
-    observer.observe(this.counterElement.nativeElement);
-  }
+  //   observer.observe(this.counterElement.nativeElement);
+
+  // }
 
   //==================================================================
 

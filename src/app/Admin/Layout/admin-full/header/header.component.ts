@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     // Simulating fetching user data
     this.user = {
       name: 'John Doe',
-      profilePic: '/assets/images/profile/user-5.png',
+      profilePic: './assets/images/user-5.png',
     };
   }
 }

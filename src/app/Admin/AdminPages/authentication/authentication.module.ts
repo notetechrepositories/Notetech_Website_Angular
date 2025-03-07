@@ -6,12 +6,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 import { AuthenticationRoutes } from './authentication.routing';
 import { AppSideLoginComponent } from './login/login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password/forgot-password.component';
+import { VerifyOtpComponent } from './verify-otp/verify-otp/verify-otp.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -24,11 +27,14 @@ import { AppSideLoginComponent } from './login/login.component';
     MatCheckboxModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
 
   ],
   declarations: [
-    AppSideLoginComponent
+    AppSideLoginComponent,
+    ForgotPasswordComponent,
+    VerifyOtpComponent,
+    ResetPasswordComponent
   ],
 })
 export class AuthenticationModule { }
