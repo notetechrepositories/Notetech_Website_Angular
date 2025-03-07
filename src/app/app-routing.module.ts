@@ -3,10 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { FullComponent } from './View/Layout/full/full.component';
 import { AdminFullComponent } from './Admin/Layout/admin-full/admin-full.component';
 import { AdminBlankComponent } from './Admin/Layout/admin-blank/admin-blank.component';
-
+import { AuthGuard } from './Admin/AdminPages/authentication/auth.guard';
 
 const routes: Routes = [
-  // User Routes
   {
     path: '',
     component: FullComponent,
@@ -19,20 +18,23 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./View/Pages/pages.module').then((m) => m.PagesModule), // ✅ Fix lazy loading syntax
+          import('./View/Pages/pages.module').then((m) => m.PagesModule), // ✅ Fix lazy loading syntax // ✅ Fix lazy loading syntax
       },
     ],
   },
 
   // Admin Routes (Protected by AuthGuard)
+  // Admin Routes (Protected by AuthGuard)
   {
     path: 'admin',
     component: AdminFullComponent,
     // canActivate: [AuthGuard], // ✅ Enable AuthGuard if needed
+    canActivate: [AuthGuard], // ✅ Protect admin routes
     children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'dashboard', // ✅ Redirect correctly
+
         pathMatch: 'full',
       },
       {
@@ -41,13 +43,12 @@ const routes: Routes = [
           import('./Admin/AdminPages/adminpages.module').then((m) => m.AdminPagesModule),
       },
       {
-        path: '', // ✅ This loads the extra module
+        path: 'extra',
         loadChildren: () =>
           import('./Admin/AdminPages/extra/extra.module').then((m) => m.AdminExtraModule),
       },
     ],
   },
-
 
   // Authentication Routes (No Guard Needed)
   {

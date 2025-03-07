@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
     <div class="branding">
       <a href="/">
         <img
-          src="./assets/images/notetech-logo-dark.png"
+
+          src="./assets/images/notetech-logo.png"
+
           class="align-middle m-2"
           alt="logo"
           height="60"

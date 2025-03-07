@@ -1,0 +1,170 @@
+<!-- Logo Positioned Separately -->
+<a
+  *ngIf="!loading"
+  [routerLink]="['/authentication/login']"
+  style="
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: inline-block;
+    z-index: 1001; /* Ensure it appears above other elements */
+  "
+>
+  <img
+  src="assets\images\notetech-logo.png"
+    alt="logo"
+    style="height: 50px"
+  />
+</a>
+
+<!-- Main Content -->
+<div
+  class="blank-layout-container justify-content-center align-items-center bg-light-primary"
+  style="height: 100vh; position: relative; padding-top: 80px"
+>
+  <div class="position-relative row w-100 bg-gredient justify-content-center">
+    <div class="col-lg-4 d-flex align-items-center flex-column">
+      <mat-card class="cardWithShadow boxed-auth" style="text-align: center">
+        <mat-card-content class="p-32">
+          <form
+            class="m-t-30 otp-form-container"
+            [formGroup]="otpForm"
+            (ngSubmit)="verifyOtp()"
+            novalidate
+            style="max-width: 400px; margin: auto; text-align: center"
+          >
+            <mat-label
+              class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+              style="
+                display: block;
+                margin-bottom: 20px;
+                font-size: 16px;
+                font-weight: 600;
+                padding-bottom: 33px;
+              "
+            >
+              Enter OTP
+            </mat-label>
+
+            <div
+              class="otp-input-container"
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 33px;
+              "
+            >
+              <div
+                *ngFor="let control of otpControls; let i = index"
+                class="otp-box"
+                style="
+                  width: 50px;
+                  height: 50px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  margin: 0 5px;
+                "
+              >
+                <input
+                  type="text"
+                  maxlength="1"
+                  autocomplete="off"
+                  [formControlName]="control"
+                  (input)="moveToNext($event, i)"
+                  (keydown.backspace)="moveToPrevious($event, i)"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    font-size: 18px;
+                    border: 1px solid #fff3cd;
+                    border-radius: 5px;
+                    outline: none;
+                  "
+                />
+              </div>
+            </div>
+
+            <!-- Buttons in one row -->
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                margin-top: 10px;
+              "
+            >
+              <button
+                mat-flat-button
+                color="accent"
+                type="button"
+                (click)="resendOtp()"
+                [disabled]="timer > 0 || resendAttempts >= maxResendAttempts"
+                style="
+                  flex: 1;
+                  padding: 10px;
+                  font-size: 14px;
+                  background-color: #ffa500;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                "
+              >
+                {{ timer > 0 ? "Resend OTP in " + timer + "s" : "Resend OTP" }}
+              </button>
+
+              <button
+                mat-flat-button
+                color="primary"
+                type="submit"
+                [disabled]="otpForm.invalid"
+                style="
+                  flex: 1;
+                  padding: 10px;
+                  font-size: 14px;
+                  background-color: #1976d2;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  transition: background-color 0.3s ease;
+                "
+              >
+                Verify OTP
+              </button>
+            </div>
+          </form>
+
+          <span class="d-block f-w-500 text-center m-t-24"
+            >Back to
+            <a
+              [routerLink]="['/authentication/login']"
+              class="text-decoration-none text-primary f-w-500 f-s-14"
+            >
+              Sign In</a
+            >
+          </span>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="cardWithShadow boxed-auth" style="text-align: center">
+        <div
+          style="
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+          "
+        >
+          ⚠️ Warning: Do not refresh the page!
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

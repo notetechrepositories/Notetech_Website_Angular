@@ -20,9 +20,11 @@
     "@angular/platform-browser-dynamic": "^17.3.7",
     "@angular/router": "^17.3.7",
     "bootstrap": "^5.3.3",
+    "jwt-decode": "^4.0.0",
     "ngx-countup": "^13.2.0",
     "ngx-scrollbar": "^9.0.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.17.2",
     "tabler": "^1.0.0-alpha.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

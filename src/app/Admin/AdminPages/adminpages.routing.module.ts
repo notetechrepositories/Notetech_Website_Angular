@@ -6,9 +6,7 @@ export const AdminPagesRoutes: Routes = [
   {
     path: 'dashboard',
     component: AppDashboardComponent,
-    data: {
-      title: 'Starter Page',
-    },
+
 
   },
 
