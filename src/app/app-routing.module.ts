@@ -24,17 +24,15 @@ const routes: Routes = [
   },
 
   // Admin Routes (Protected by AuthGuard)
-  // Admin Routes (Protected by AuthGuard)
+
   {
     path: 'admin',
     component: AdminFullComponent,
-    // canActivate: [AuthGuard], // ✅ Enable AuthGuard if needed
     canActivate: [AuthGuard], // ✅ Protect admin routes
     children: [
       {
         path: '',
         redirectTo: 'dashboard', // ✅ Redirect correctly
-
         pathMatch: 'full',
       },
       {
@@ -43,7 +41,7 @@ const routes: Routes = [
           import('./Admin/AdminPages/adminpages.module').then((m) => m.AdminPagesModule),
       },
       {
-        path: 'extra',
+        path: '',
         loadChildren: () =>
           import('./Admin/AdminPages/extra/extra.module').then((m) => m.AdminExtraModule),
       },

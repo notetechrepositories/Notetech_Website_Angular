@@ -10,6 +10,12 @@ export const navItemsAllUser: NavItem[] = [
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
     route: '/admin/dashboard',
+  },
+  {
+    subtext: 'contact',
+    displayName: 'Contact',
+    iconName: 'layout-dashboard',
+    route: '/admin/contact-us',
   }
 ];
 
