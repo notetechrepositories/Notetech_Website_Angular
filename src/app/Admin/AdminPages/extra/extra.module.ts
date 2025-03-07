@@ -10,6 +10,7 @@ import { ContactComponent } from "../../../View/Pages/contact/contact.component"
 import { ContactUsComponent } from "./contact-us/contact-us.component";
 import { MaterialModule } from "../../../material.module";
 import { ViewContactComponent } from "./contact-us/view-contact/view-contact.component";
+import { ReplayComponent } from "./contact-us/replay/replay.component";
 
 
 
@@ -22,11 +23,13 @@ import { ViewContactComponent } from "./contact-us/view-contact/view-contact.com
         MatDialogModule,
         MaterialModule,
         MatSnackBarModule,
+
         MatProgressSpinnerModule,
     ],
     declarations: [
         ContactUsComponent,
-        ViewContactComponent
+        ViewContactComponent,
+        ReplayComponent
     ],
 })
 export class AdminExtraModule { }

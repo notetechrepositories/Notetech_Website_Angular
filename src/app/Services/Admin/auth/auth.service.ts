@@ -14,9 +14,9 @@ export class AuthService {
 
   private apiUrl = environment.baseUrl;
 
-  constructor(private http:HttpClient,
+  constructor(private http: HttpClient,
     private tokenService: TokenService,
-    private router: Router) {}
+    private router: Router) { }
 
   isLoggedIn(): boolean {
 
@@ -26,18 +26,18 @@ export class AuthService {
 
   adminLogin(username: string, password: string): Observable<any> {
 
-    console.log(this.apiUrl);
 
     const loginPayload = { username, password };
-    console.log("loginPayload", loginPayload);
+
     return this.http.post<any>(`${this.apiUrl}auth/login`, loginPayload);
   }
-  
+
   // Function to handle the login logic (subscribing to the observable)
   handleLogin(username: string, password: string) {
     return this.adminLogin(username, password).subscribe({
       next: async (res) => {
         if (res.status === 200) {
+          // if (res.data.)
           await this.tokenService.storeToken(res.data); // Store token
           this.router.navigate(['/admin/dashboard']); // Navigate to the dashboard
         } else {
@@ -74,7 +74,7 @@ export class AuthService {
 
   ForgotPassword(username: string): Observable<any> {
     console.log("entered into forgotpassword");
-    
+
     var data = null;
     var url = this.apiUrl + "auth/forgot-password?username=" + username
     console.log(url);

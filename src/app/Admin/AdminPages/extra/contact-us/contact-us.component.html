@@ -75,14 +75,6 @@
           <td mat-cell *matCellDef="let element">{{ element.message }}</td>
         </ng-container>
 
-        <!-- Replay Subject Column -->
-        <ng-container matColumnDef="replay_subject">
-          <th mat-header-cell *matHeaderCellDef>Replay Subject</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.replay_subject }}
-          </td>
-        </ng-container>
-
         <!-- Insert Date Column -->
         <ng-container matColumnDef="insert_date">
           <th mat-header-cell *matHeaderCellDef>Insert Date</th>
@@ -108,6 +100,15 @@
               (click)="deleteContact(element.id)"
             >
               <i class="ti ti-trash"></i>
+            </button>
+            <!-- Reply Button (Only Shows if Reply is NULL) -->
+            <button
+              mat-icon-button
+              color="accent"
+              *ngIf="!element.reply"
+              (click)="replyToMessage(element)"
+            >
+              <i class="ti ti-message"></i>
             </button>
           </td>
         </ng-container>

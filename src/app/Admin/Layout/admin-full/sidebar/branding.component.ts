@@ -4,18 +4,16 @@ import { Component } from '@angular/core';
   selector: 'app-branding',
   template: `
     <div class="branding">
-      <a href="/">
-        <img
+     <a [routerLink]="['/authentication/login']">
+  <img
+    src="./assets/images/notetech-logo.png"
+    class="align-middle m-2"
+    alt="logo"
+    height="60"
+    style="padding: 7px;"
+  />
+</a>
 
-          src="./assets/images/notetech-logo.png"
-
-          class="align-middle m-2"
-          alt="logo"
-          height="60"
-   
-          style="padding: 7px;"
-        />
-      </a>
     </div>
   `,
 })

@@ -6,10 +6,13 @@ html .topbar {
   height: $header-height;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
+      justify-content: end;
+        display: flex;
 }
 
 .topbar-dd {
   min-width: 200px !important;
+ 
 }
 
 .object-cover {

@@ -6,7 +6,10 @@ import { Injectable } from '@angular/core';
 export class EncryptionService {
   private key: string = 'Zm94Zm9ybXdob2xlZ3VudGhpbmdmb2d3b2xmbGFtcGJyZWF0aGluZ3BsYXRlc21pbmU='; // Change this key for better security
   constructor() { }
-
+  // Encrypt and store data
+  encryptData(data: string): string {
+    return this.xorEncrypt(data);
+  }
   // Simple XOR encryption (HTTP-compatible)
   private xorEncrypt(data: string): string {
     let encrypted = '';
@@ -26,15 +29,13 @@ export class EncryptionService {
     return decrypted;
   }
 
-  // Encrypt and store data
-  encryptData(data: string): string {
-    return this.xorEncrypt(data);
-  }
+
+
 
   // Decrypt stored data
   decryptData(encryptedData: string): string {
-    console.log("Entered to decryptData",encryptedData);
-    
+    console.log("Entered to decryptData", encryptedData);
+
     return this.xorDecrypt(encryptedData);
   }
 }

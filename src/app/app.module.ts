@@ -19,6 +19,7 @@ import { BrandingComponent } from './Admin/Layout/admin-full/sidebar/branding.co
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { CountUpModule } from 'ngx-countup';
 
+import { QuillModule } from 'ngx-quill';
 
 
 
@@ -43,10 +44,11 @@ import { CountUpModule } from 'ngx-countup';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    QuillModule.forRoot(),
     BrowserAnimationsModule,
     NgScrollbarModule,
     CountUpModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

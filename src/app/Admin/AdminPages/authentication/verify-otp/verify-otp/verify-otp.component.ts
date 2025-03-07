@@ -11,27 +11,29 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   styleUrl: './verify-otp.component.css'
 })
 export class VerifyOtpComponent {
-  loading:boolean=true;
+  loading: boolean = false;
   otpControls: string[] = ['otp1', 'otp2', 'otp3', 'otp4', 'otp5', 'otp6'];
-  otpForm!:FormGroup;
-  encryptedContact!:string;
-  username!: string;
+  otpForm!: FormGroup;
+  encryptedContact!: string;
+  username: any;
   otp!: string;
   otpGeneratedTime!: string;
-  timer: number=60;
   interval: any;
+  timer: number = 30;
+  sectiontimer: number = 120;
+  sectionInterval: any;
   resendAttempts: number = 0; // Number of times "Resend OTP" is clicked
   maxResendAttempts: number = 3; // Maximum allowed resend attempts// Initial timer value (60 seconds)
   isErrorMessage = false;
   errorMessage: string = '';
 
   constructor(
-    private authService:AuthService,
-    private router:Router,
+    private authService: AuthService,
+    private router: Router,
     private route: ActivatedRoute,
     private encryptSevice: EncryptionService,
     private fb: FormBuilder
-  ){
+  ) {
     const controlsConfig: { [key: string]: AbstractControl } = {};
     this.otpControls.forEach((control) => {
       controlsConfig[control] = this.fb.control('', [
@@ -41,47 +43,63 @@ export class VerifyOtpComponent {
     });
     this.otpForm = this.fb.group(controlsConfig);
   }
-  async  ngOnInit(){
+  async ngOnInit() {
     this.loading = true;
-    console.log("reached verify otp");
-    
-  // Ensure loading state is set at the beginning
+
 
     // Check login status first
-    const isLoggedIn =await this.authService.isLoggedIn();
+    const isLoggedIn = await this.authService.isLoggedIn();
     if (isLoggedIn) {
       this.router.navigate(['/dashboard']); // Redirect to dashboard if logged in
       return;
     }
 
-  
+
     this.route.queryParams.subscribe(async (params) => {
       this.encryptedContact = params['data'];
-      console.log(this.encryptedContact);
-      
-      console.log("data is:",this.encryptedContact);
-      
+
+
       try {
         // Ensure encryptedContact exists and is a string
         if (!this.encryptedContact || typeof this.encryptedContact !== 'string') {
           this.router.navigate(['/authentication/login']);
           return;
         }
-        console.log(this.encryptedContact);
-        
+
+
+
         // ✅ Correctly decrypt data instead of encrypting it again
-        this.username = await this.encryptSevice.decryptData(this.encryptedContact);
-        console.log("decrypted",this.username);
-        console.log(this.username);
+        var jsonString = await this.encryptSevice.decryptData(this.encryptedContact);
+
 
         // Ensure decryption was successful
-        if (!this.username) {
+        if (!jsonString) {
           this.router.navigate(['/authentication/login']);
           return;
         }
+        var data = JSON.parse(jsonString);
+        if (!jsonString) {
+          this.router.navigate(['/authentication/login']);
+          return;
+        }
+        this.otp = data.user.encryptedOtp;
+        this.otpGeneratedTime = data.user.otpGeneratedTime;
+        this.username = data.email
 
-        // ✅ Proceed only if decryption is successful
-        await this.sendOtp();
+        if (this.otpGeneratedTime != null
+          && this.checkTimeDifference(this.otpGeneratedTime) <= 1
+          && this.otp != null) {
+          this.startTimer();
+          this.startSectionTimer();
+          this.loading = false;
+        }
+        else {
+          this.router.navigate(['/authentication/login']);
+        }
+
+
+
+
       } catch (error) {
         Swal.fire({
           position: 'top-end',
@@ -104,17 +122,30 @@ export class VerifyOtpComponent {
 
   sendOtp() {
     console.log("entered into sendotp");
-    
+
     this.authService.ForgotPassword(this.username).subscribe({
-      next: (res) => {
+      next: async (res) => {
         console.log("returned from forgotpassword");
-        
+
         if (res.status == 200) {
           console.log(res.status);
-          
-          this.otp = res.data.encryptedOtp;
-          this.otpGeneratedTime = res.data.otpGeneratedTime;
-          this.startTimer();
+
+          this.otp = await res.data.encryptedOtp;
+          this.otpGeneratedTime = await res.data.otpGeneratedTime;
+          if (this.otpGeneratedTime != null
+            && this.checkTimeDifference(this.otpGeneratedTime) <= 1
+            && this.otp != null) {
+            this.startTimer();
+            this.startSectionTimer();
+            this.loading = false;
+          }
+          else {
+            this.router.navigate(['/authentication/login']);
+          }
+
+
+
+          this.loading = false;
         }
         else {
           Swal.fire({
@@ -130,7 +161,7 @@ export class VerifyOtpComponent {
             showCloseButton: true,
           });
 
-          this.router.navigate(['/authentication/login']);
+          this.router.navigate(['/authentication/forgot-password']);
         }
       },
       error: (error) => {
@@ -138,17 +169,64 @@ export class VerifyOtpComponent {
 
       }
     });
-  }
 
+  }
   startTimer(): void {
-    this.timer = 60;
+    const otpTime = new Date(this.otpGeneratedTime).getTime(); // Convert OTP time to milliseconds
+    const currentTime = new Date().getTime(); // Get current time
+    const timeDifference = (otpTime + 30000) - currentTime; // 2 minutes (120000 ms) expiry time
+
+
+
+    this.timer = Math.floor(timeDifference / 1000); // Convert to seconds
+
+
     this.interval = setInterval(() => {
       if (this.timer > 0) {
         this.timer--;
       } else {
         clearInterval(this.interval);
+
       }
     }, 1000);
+  }
+
+  startSectionTimer(): void {
+    const otpTime = new Date(this.otpGeneratedTime).getTime(); // Convert OTP time to milliseconds
+    const currentTime = new Date().getTime(); // Get current time
+    const timeDifference = (otpTime + 120000) - currentTime; // 2 minutes (120000 ms) expiry time
+    console.log(timeDifference);
+
+    if (timeDifference <= 0) {
+      this.expireOtpSession(); // Redirect immediately if already expired
+      return;
+    }
+
+    this.sectiontimer = Math.floor(timeDifference / 1000);
+    this.sectionInterval = setInterval(() => {
+      if (this.sectiontimer > 0) {
+        this.sectiontimer--;
+      }
+      else {
+        this.expireOtpSession(); // Redirect immediately if already expired
+      }
+    }, 1000);
+  }
+  expireOtpSession() {
+
+    this.router.navigate(['/authentication/forgot-password']);
+    // Swal.fire({
+    //   position: 'top-end',
+    //   icon: 'warning',
+    //   title: 'Section Expired',
+    //   showConfirmButton: false,
+    //   timer: 3000,
+    //   toast: true,
+    //   background: '#f44336',
+    //   color: 'white',
+    //   padding: '10px',
+    //   showCloseButton: true,
+    // });
   }
 
   checkTimeDifference(otpGeneratedTime: any): any {
@@ -190,45 +268,7 @@ export class VerifyOtpComponent {
     if (this.resendAttempts < this.maxResendAttempts) {
       if (this.username != null) {
         this.resendAttempts++;
-        this.authService.ForgotPassword(this.username).subscribe({
-          next: (res) => {
-            if (res.status == 200) {
-              this.otp = res.data.encryptedOtp;
-
-              this.otpGeneratedTime = res.data.otpGeneratedTime;
-              this.startTimer();
-
-            }
-            else {
-              Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: res.message,
-                showConfirmButton: false,
-                timer: 3000,
-                toast: true,
-                background: '#f44336',
-                color: 'white',
-                padding: '10px',
-                showCloseButton: true,
-              });
-            }
-          },
-          error: (error) => {
-            Swal.fire({
-              position: 'top-end',
-              icon: 'error',
-              title: 'Somthing is wrong.',
-              showConfirmButton: false,
-              timer: 3000,
-              toast: true,
-              background: '#f44336',
-              color: 'white',
-              padding: '10px',
-              showCloseButton: true,
-            });
-          }
-        });
+        this.sendOtp();
       }
       else {
         this.router.navigate(['/authentication/login']);
