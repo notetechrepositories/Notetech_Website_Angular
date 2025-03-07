@@ -9,7 +9,7 @@ export const navItemsAllUser: NavItem[] = [
     subtext: 'dashboard',
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
-    route: '/dashboard',
+    route: '/admin/dashboard',
   }
 
 ];

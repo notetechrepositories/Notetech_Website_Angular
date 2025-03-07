@@ -9,32 +9,26 @@
     <!-- <video class="background-video" autoplay loop muted playsinline>
     <source src="assets/video/bg-video1.mp4" type="video/mp4" />
     Your browser does not support the video tag.
-  </video> -->
+    </video> -->
 
-  <div class="container p-5">
-    <div class="row d-flex align-items-center justify-content-center vh-100">
-      <div
-        class="col-md-8 d-flex flex-column align-items-start justify-content-center text-start p-2"
-      >
-        <h1>
-          Leading Offshore<br />
-          <span
-            class="text-blue-glow"
-            [ngStyle]="{ 'text-shadow': getGlowStyle() }"
-          >
-            SOFTWARE DEVELOPMENT</span
-          ><br />
-          Company
-        </h1>
-        <p class="mt-2">
-          26+ years of excellence in delivering cutting-edge software solutions
-          to clients worldwide.
-        </p>
+    <div class="container p-5">
+      <div class="row d-flex align-items-center justify-content-center vh-100">
+        <div class="col-md-8 d-flex flex-column align-items-start justify-content-center text-start p-2">
+          <h1>
+            Leading Offshore<br />
+            <span class="text-blue-glow" [ngStyle]="{ 'text-shadow': getGlowStyle() }">
+              SOFTWARE DEVELOPMENT</span><br />
+            Company
+          </h1>
+          <p class="mt-2">
+            26+ years of excellence in delivering cutting-edge software solutions
+            to clients worldwide.
+          </p>
+        </div>
+
       </div>
-  
     </div>
-  </div>
-</section>
+  </section>
 
   <section class="section-2">
     <div class="about-section">
@@ -51,30 +45,18 @@
             </div>
             <button href="#" class="read-more-btn">
               <span class="read-more-btn__icon-wrapper">
-                <svg
-                  viewBox="0 0 14 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="read-more-btn__icon-svg"
-                  width="10"
-                >
+                <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-more-btn__icon-svg"
+                  width="10">
                   <path
                     d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                    fill="currentColor"
-                  ></path>
+                    fill="currentColor"></path>
                 </svg>
 
-                <svg
-                  viewBox="0 0 14 15"
-                  fill="none"
-                  width="10"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="read-more-btn__icon-svg read-more-btn__icon-svg--copy"
-                >
+                <svg viewBox="0 0 14 15" fill="none" width="10" xmlns="http://www.w3.org/2000/svg"
+                  class="read-more-btn__icon-svg read-more-btn__icon-svg--copy">
                   <path
                     d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                    fill="currentColor"
-                  ></path>
+                    fill="currentColor"></path>
                 </svg>
               </span>
               <span class="btn-txt">Read More</span>
@@ -127,17 +109,12 @@
             </div>
           </div>
         </div> -->
-          <div
-            class="row our-offer-items less-carousel w-100 d-flex justify-content-center"
-            *ngIf="pageDetailsContentOneModel.section_two?.length != 0"
-          >
-            <div
-              class="col-md-4 col-sm-6 equal-height"
-              *ngFor="
+          <div class="row our-offer-items less-carousel w-100 d-flex justify-content-center"
+            *ngIf="pageDetailsContentOneModel.section_two?.length != 0">
+            <div class="col-md-4 col-sm-6 equal-height" *ngFor="
                 let page of pageDetailsContentOneModel.section_two
                   | slice : 0 : 6
-              "
-            >
+              ">
               <div class="item">
                 <i class="fas fa-pen-fancy"></i>
                 <h4>{{ page.home_content_title }}</h4>
@@ -145,10 +122,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="d-flex justify-content-center"
-            style="margin-bottom: 52px"
-          >
+          <div class="d-flex justify-content-center" style="margin-bottom: 52px">
             <button class="view-all-btn">
               View All
               <div class="arrow-wrapper">
@@ -166,9 +140,7 @@
       <div class="row w-100">
         <div class="col-md-6">
           <h1>
-            <span class="text-gray" style="font-size: 2rem"
-              >Elevate your business with</span
-            ><br />
+            <span class="text-gray" style="font-size: 2rem">Elevate your business with</span><br />
             <span class="text-blue">Notetech Software.</span>
           </h1>
           <p>
@@ -177,30 +149,18 @@
           </p>
           <button href="#" class="read-more-btn">
             <span class="read-more-btn__icon-wrapper">
-              <svg
-                viewBox="0 0 14 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="read-more-btn__icon-svg"
-                width="10"
-              >
+              <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-more-btn__icon-svg"
+                width="10">
                 <path
                   d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                  fill="currentColor"
-                ></path>
+                  fill="currentColor"></path>
               </svg>
 
-              <svg
-                viewBox="0 0 14 15"
-                fill="none"
-                width="10"
-                xmlns="http://www.w3.org/2000/svg"
-                class="read-more-btn__icon-svg read-more-btn__icon-svg--copy"
-              >
+              <svg viewBox="0 0 14 15" fill="none" width="10" xmlns="http://www.w3.org/2000/svg"
+                class="read-more-btn__icon-svg read-more-btn__icon-svg--copy">
                 <path
                   d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                  fill="currentColor"
-                ></path>
+                  fill="currentColor"></path>
               </svg>
             </span>
             <span class="btn-txt">Let's Start</span>
@@ -218,47 +178,22 @@
           {{ pageDetailsContentTwoModel.light_title }}
         </p>
         <h1 class="text-center" [innerHTML]="safeTestimonialTitle"></h1>
-        <div
-          class="slider mt-5"
-          *ngIf="pageDetailsContentTwoModel.pagesModels?.length != 0"
-        >
+        <div class="slider mt-5" *ngIf="pageDetailsContentTwoModel.pagesModels?.length != 0">
           <div class="slide-track">
-            <div
-              class="slide"
-              *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels"
-            >
-              <img
-                src="{{ pageDetail.home_image }}"
-                height="150"
-                width="350"
-                alt="{{ pageDetail.home_image }}"
-              />
+            <div class="slide" *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels">
+              <img src="{{ pageDetail.home_image }}" height="150" width="350" alt="{{ pageDetail.home_image }}" />
             </div>
-            <div
-              class="slide"
-              *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels"
-            >
-              <img
-                src="{{ pageDetail.home_image }}"
-                height="150"
-                width="350"
-                alt="{{ pageDetail.home_image }}"
-              />
+            <div class="slide" *ngFor="let pageDetail of pageDetailsContentTwoModel.pagesModels">
+              <img src="{{ pageDetail.home_image }}" height="150" width="350" alt="{{ pageDetail.home_image }}" />
             </div>
           </div>
         </div>
-        <div
-          class="tech-content"
-          *ngIf="pageDetailsContentTwoModel.section_two?.length != 0"
-        >
+        <div class="tech-content" *ngIf="pageDetailsContentTwoModel.section_two?.length != 0">
           <div class="row w-100 d-flex justify-content-center">
-            <div
-              class="col-md-4 col-sm-12"
-              *ngFor="
+            <div class="col-md-4 col-sm-12" *ngFor="
                 let item of pageDetailsContentTwoModel.section_two
                   | slice : 0 : 3
-              "
-            >
+              ">
               <div class="card tech-card text-center mb-3">
                 <div class="card-body">
                   <h3 class="card-title">{{ item.home_content_title }}</h3>
@@ -277,44 +212,15 @@
       <div class="row">
         <p class="text-blue mb-0">TESTIMONIALS</p>
         <h1>
-          What Our <span class="text-blue">Clients </span>Say<span
-            class="text-blue"
-          >
-            ?</span
-          >
+          What Our <span class="text-blue">Clients </span>Say<span class="text-blue">
+            ?</span>
         </h1>
         <div class="testimonials-section">
-          <input
-            type="radio"
-            name="slider"
-            title="slide1"
-            checked="checked"
-            class="slider__nav"
-          />
-          <input
-            type="radio"
-            name="slider"
-            title="slide2"
-            class="slider__nav"
-          />
-          <input
-            type="radio"
-            name="slider"
-            title="slide3"
-            class="slider__nav"
-          />
-          <input
-            type="radio"
-            name="slider"
-            title="slide4"
-            class="slider__nav"
-          />
-          <input
-            type="radio"
-            name="slider"
-            title="slide5"
-            class="slider__nav"
-          />
+          <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav" />
+          <input type="radio" name="slider" title="slide2" class="slider__nav" />
+          <input type="radio" name="slider" title="slide3" class="slider__nav" />
+          <input type="radio" name="slider" title="slide4" class="slider__nav" />
+          <input type="radio" name="slider" title="slide5" class="slider__nav" />
           <div class="slider__inner">
             <div class="slider__contents">
               <blockquote>&rdquo;</blockquote>
@@ -388,36 +294,24 @@
           <!-- <img src="https://i.ibb.co/QpYG5f2/offices-world-map-e2cc096.png" alt="World Map"> -->
           <img src="assets/images/worldmap.png" alt="" />
 
-          <div
-            class="map_marker dot_india"
-            (mouseenter)="showLocationInfo('india')"
-            (mouseleave)="hideLocationInfo('india')"
-            (click)="toggleLocationInfo('india')"
-          >
-            <div
-              *ngIf="!footerData.map_address"
-              class="marker_info"
-              [ngClass]="{ visible: activeLocation === 'india' }"
+          <div class="map_marker dot_india" (mouseenter)="showLocationInfo('india')"
+            (mouseleave)="hideLocationInfo('india')" (click)="toggleLocationInfo('india')">
+            <div *ngIf="!footerData.map_address" class="marker_info" [ngClass]="{ visible: activeLocation === 'india' }"
               (click)="
                 redirectToMap(
                   footerData.google_map ? footerData.google_map : '#'
                 )
-              "
-            >
+              ">
               <!-- <img src="https://i.ibb.co/X2WNSXX/istanbul-icon.png" alt="India Icon"> -->
               <p><strong>India</strong><br /></p>
             </div>
 
-            <div
-              *ngIf="footerData.map_address"
-              class="marker_info"
-              [ngClass]="{ visible: activeLocation === 'india' }"
+            <div *ngIf="footerData.map_address" class="marker_info" [ngClass]="{ visible: activeLocation === 'india' }"
               (click)="
                 redirectToMap(
                   footerData.google_map ? footerData.google_map : '#'
                 )
-              "
-            >
+              ">
               <!-- <img src="https://i.ibb.co/X2WNSXX/istanbul-icon.png" alt="India Icon"> -->
               <!-- <p>
               <strong>India</strong><br />

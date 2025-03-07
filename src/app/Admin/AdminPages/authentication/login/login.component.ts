@@ -1,35 +1,53 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../Services/Admin/auth/auth.service';
 import { BehaviorSubject } from 'rxjs';
-
-
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class AppSideLoginComponent {
-  loading: boolean = true;
-  loginForm !: FormGroup
-  errorMessage: string = '';
-  private userSubject = new BehaviorSubject<any>(null);
-  public user$ = this.userSubject.asObservable();
+
+
+
   constructor(
-    private fb: FormBuilder,
-    private router: Router,) { }
+    private router: Router,
+    private fb:FormBuilder, 
+    private authService: AuthService,
+    ) { }
 
+  loginForm!: FormGroup;
+  loading: boolean= true;
+  // private userSubject = new BehaviorSubject<any>(null);
   async ngOnInit() {
-
+    this.initialise();
 
   }
 
-  getUser() {
-    return this.userSubject.value;
+  initialise(){
+    const isLoggedIn = this.authService.isLoggedIn(); // Check login status first
+    if (isLoggedIn) {
+      this.router.navigate(['/dashboard']); // Redirect to dashboard if logged in
+      return; // Prevent further execution
+    }
+    this.loginForm=this.fb.group({
+      username:['',[Validators.required]],
+      password:['',Validators.required]
+    })
+    this.loading = false;
   }
 
+  // getUser() {
+  //   return this.userSubject.value;
+  // }
   onLogin(): void {
-
+    if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+      
+      this.authService.handleLogin(username, password); // Call handleLogin() from the service
+    }
   }
 }
 
