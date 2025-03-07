@@ -6,6 +6,10 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { RouterModule } from "@angular/router";
 import { AdminExtraRoutes } from "./extra.routing.module";
+import { ContactComponent } from "../../../View/Pages/contact/contact.component";
+import { ContactUsComponent } from "./contact-us/contact-us.component";
+import { MaterialModule } from "../../../material.module";
+import { ViewContactComponent } from "./contact-us/view-contact/view-contact.component";
 
 
 
@@ -16,11 +20,13 @@ import { AdminExtraRoutes } from "./extra.routing.module";
         ReactiveFormsModule,
         RouterModule.forChild(AdminExtraRoutes),
         MatDialogModule,
+        MaterialModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
     ],
     declarations: [
-
+        ContactUsComponent,
+        ViewContactComponent
     ],
 })
 export class AdminExtraModule { }

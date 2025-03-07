@@ -6,7 +6,6 @@ import { AdminBlankComponent } from './Admin/Layout/admin-blank/admin-blank.comp
 import { AuthGuard } from './Admin/AdminPages/authentication/auth.guard';
 
 const routes: Routes = [
-  // User Routes
   {
     path: '',
     component: FullComponent,
@@ -19,12 +18,13 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./View/Pages/pages.module').then((m) => m.PagesModule), // ✅ Fix lazy loading syntax
+          import('./View/Pages/pages.module').then((m) => m.PagesModule), // ✅ Fix lazy loading syntax // ✅ Fix lazy loading syntax
       },
     ],
   },
 
   // Admin Routes (Protected by AuthGuard)
+
   {
     path: 'admin',
     component: AdminFullComponent,
@@ -41,7 +41,7 @@ const routes: Routes = [
           import('./Admin/AdminPages/adminpages.module').then((m) => m.AdminPagesModule),
       },
       {
-        path: 'extra',
+        path: '',
         loadChildren: () =>
           import('./Admin/AdminPages/extra/extra.module').then((m) => m.AdminExtraModule),
       },
@@ -74,4 +74,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
